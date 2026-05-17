@@ -72,7 +72,6 @@ const HomePage = () => {
         />
 
         <OurClients />
-        
         <OurWorkspace />
         <CoreSolutions />
         <Gallery />

@@ -10,6 +10,15 @@ const BentoCardGrid = ({ children, gridRef }) => (
   </div>
 );
 
+const cardGradients = [
+  'linear-gradient(137deg, #A855F7 0%, #EC4899 45%, #F43F5E 100%)', // Social Media Marketing (Purple/Pink)
+  'linear-gradient(137deg, #3B82F6 0%, #06B6D4 45%, #10B981 100%)', // Social Media Advertising (Blue/Cyan)
+  'linear-gradient(137deg, #10B981 0%, #84CC16 45%, #EAB308 100%)', // Web Development (Green/Lime)
+  'linear-gradient(137deg, #6366F1 0%, #4F46E5 45%, #D946EF 100%)', // Automation (Indigo/Violet)
+  'linear-gradient(137deg, #F59E0B 0%, #EF4444 45%, #EC4899 100%)', // AI Content & Influencers (Gold/Orange)
+  'linear-gradient(137deg, #EC4899 0%, #F43F5E 45%, #A855F7 100%)'  // Digital Invitations (Pink/Rose)
+];
+
 const MagicBento = ({
   glowColor = '168, 85, 247',
   enableTilt = true,
@@ -32,101 +41,105 @@ const MagicBento = ({
 
       <BentoCardGrid gridRef={gridRef}>
         {servicesData.map((card, index) => {
-          const baseClassName = `magic-bento-card ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
+          const baseClassName = `magic-bento-card`;
+          const gradient = cardGradients[index % cardGradients.length];
           
           return (
-            <Link
-              key={card.id}
-              to={`/services/${card.id}`}
-              className={`${baseClassName} group`}
-              style={{
-                '--glow-color': glowColor
-              }}
-              onMouseMove={(e) => {
-                const el = e.currentTarget;
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
+            <div key={card.id} className="relative group w-full h-full">
+              {/* Glow Background (Outside overflow-hidden for overflow bleed effect) */}
+              <div 
+                className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-60 rounded-[20px] pointer-events-none transition-all duration-500 scale-105"
+                style={{ 
+                  background: gradient, 
+                  filter: "blur(40px)",
+                  zIndex: 0
+                }}
+              />
 
-                if (enableTilt) {
-                  const rotateX = ((y - centerY) / centerY) * -10;
-                  const rotateY = ((x - centerX) / centerX) * 10;
-                  gsap.to(el, {
-                    rotateX,
-                    rotateY,
-                    duration: 0.2,
-                    ease: 'power2.out',
-                    transformPerspective: 1000
-                  });
-                }
+              {/* Foreground Card with Gradient Border */}
+              <Link
+                to={`/services/${card.id}`}
+                className={`${baseClassName} relative z-10 block w-full h-full rounded-[20px] overflow-hidden`}
+                style={{
+                  border: '3px solid transparent',
+                  background: `linear-gradient(#100E14, #100E14) padding-box, ${gradient} border-box`,
+                  aspectRatio: '4/3',
+                  minHeight: '200px'
+                }}
+                onMouseMove={(e) => {
+                  const el = e.currentTarget;
+                  const rect = el.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
 
-                if (enableMagnetism) {
-                  const magnetX = (x - centerX) * 0.05;
-                  const magnetY = (y - centerY) * 0.05;
+                  if (enableTilt) {
+                    const rotateX = ((y - centerY) / centerY) * -8;
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    gsap.to(el, {
+                      rotateX,
+                      rotateY,
+                      duration: 0.2,
+                      ease: 'power2.out',
+                      transformPerspective: 1000
+                    });
+                  }
+
+                  if (enableMagnetism) {
+                    const magnetX = (x - centerX) * 0.04;
+                    const magnetY = (y - centerY) * 0.04;
+                    gsap.to(el, {
+                      x: magnetX,
+                      y: magnetY,
+                      duration: 0.4,
+                      ease: 'power2.out'
+                    });
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
                   gsap.to(el, {
-                    x: magnetX,
-                    y: magnetY,
-                    duration: 0.4,
+                    rotateX: 0,
+                    rotateY: 0,
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
                     ease: 'power2.out'
                   });
-                }
-
-                el.style.setProperty('--glow-x', `${x}px`);
-                el.style.setProperty('--glow-y', `${y}px`);
-                el.style.setProperty('--glow-intensity', '1');
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget;
-                gsap.to(el, {
-                  rotateX: 0,
-                  rotateY: 0,
-                  x: 0,
-                  y: 0,
-                  duration: 0.5,
-                  ease: 'power2.out'
-                });
-                el.style.setProperty('--glow-intensity', '0');
-              }}
-            >
-              {/* Background Image Layer */}
-              <div className="absolute inset-0 z-0 transition-transform duration-700 ease-out group-hover:scale-110">
-                <img 
-                  src={card.image} 
-                  alt={card.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500"
-                />
-                {/* Gradient Overlay for Readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-              </div>
-
-              <div className="magic-bento-card__header relative z-10 flex justify-between items-start mb-12">
-                <div className="magic-bento-card__label text-xs font-body text-white/40 tracking-widest uppercase">// 0{index + 1}</div>
-                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover:border-white/30 transition-colors">
-                  <svg className="w-5 h-5 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M7 17L17 7" /><path d="M7 7h10v10" />
-                  </svg>
+                }}
+              >
+                {/* Background Image Layer */}
+                <div className="absolute inset-0 z-0 transition-transform duration-700 ease-out group-hover:scale-110">
+                  <img 
+                    src={card.image} 
+                    alt={card.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500"
+                  />
+                  {/* Gradient Overlay for Readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
                 </div>
-              </div>
-              
-              <div className="magic-bento-card__content relative z-10 mt-auto">
-                <h3 className="magic-bento-card__title text-2xl md:text-3xl font-heading italic text-white mb-3 tracking-tight">
-                  {card.title}
-                </h3>
-                <p className="magic-bento-card__description text-sm text-white/50 font-body font-light leading-relaxed line-clamp-2">
-                  {card.description}
-                </p>
-              </div>
-              
-              {/* Internal Glow Effect Layer */}
-              <div className="absolute inset-0 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
-                   style={{
-                     background: `radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(${glowColor}, 0.15), transparent 70%)`
-                   }}>
-              </div>
-            </Link>
+
+                <div className="magic-bento-card__header relative z-10 flex justify-between items-start mb-12">
+                  <div className="magic-bento-card__label text-xs font-body text-white/40 tracking-widest uppercase">// 0{index + 1}</div>
+                  <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover:border-white/30 transition-colors">
+                    <svg className="w-5 h-5 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M7 17L17 7" /><path d="M7 7h10v10" />
+                    </svg>
+                  </div>
+                </div>
+                
+                <div className="magic-bento-card__content relative z-10 mt-auto">
+                  <h3 className="magic-bento-card__title text-2xl md:text-3xl font-heading italic text-white mb-3 tracking-tight">
+                    {card.title}
+                  </h3>
+                  <p className="magic-bento-card__description text-sm text-white/50 font-body font-light leading-relaxed line-clamp-2">
+                    {card.description}
+                  </p>
+                </div>
+              </Link>
+            </div>
           );
         })}
       </BentoCardGrid>
