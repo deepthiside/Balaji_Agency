@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
 import HeroSection from './components/HeroSection.jsx';
 import Founder from './components/Founder.jsx';
@@ -15,6 +15,7 @@ import CoreSolutions from './components/CoreSolutions.jsx';
 import Gallery from './components/Gallery.jsx';
 import Reviews from './components/Reviews.jsx';
 import WhatsAppButton from './components/WhatsAppButton.jsx';
+import IntroLoader from './components/IntroLoader.jsx';
 
 // Service Pages
 import SocialMediaMarketing from './pages/services/SocialMediaMarketing.jsx';
@@ -84,40 +85,45 @@ const HomePage = () => {
 };
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
-    <Router>
-      <ScrollToTop />
-      <WhatsAppButton />
-      <div className="bg-black text-white min-h-screen flex flex-col">
-        <PillNav 
-          logo={logo}
-          logoAlt="Balaji Creatives Logo"
-          items={navItems}
-          baseColor="#ffffff"
-          pillColor="#000000"
-          hoveredPillTextColor="#000000"
-          pillTextColor="#ffffff"
-        />
-        
-        <div className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about-us" element={<AboutPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
-            <Route path="/services/social-media-advertising" element={<SocialMediaAdvertising />} />
-            <Route path="/services/web-development" element={<WebDevelopment />} />
-            <Route path="/services/automation" element={<Automation />} />
-            <Route path="/services/ai-content-influencers" element={<AIContent />} />
-            <Route path="/services/digital-invitations" element={<DigitalInvitations />} />
-          </Routes>
+    <>
+      {loading && <IntroLoader onComplete={() => setLoading(false)} />}
+      <Router>
+        <ScrollToTop />
+        <WhatsAppButton />
+        <div className="bg-black text-white min-h-screen flex flex-col">
+          <PillNav 
+            logo={logo}
+            logoAlt="Balaji Creatives Logo"
+            items={navItems}
+            baseColor="#ffffff"
+            pillColor="#000000"
+            hoveredPillTextColor="#000000"
+            pillTextColor="#ffffff"
+          />
+          
+          <div className="flex-grow">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about-us" element={<AboutPage />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:id" element={<BlogPost />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
+              <Route path="/services/social-media-advertising" element={<SocialMediaAdvertising />} />
+              <Route path="/services/web-development" element={<WebDevelopment />} />
+              <Route path="/services/automation" element={<Automation />} />
+              <Route path="/services/ai-content-influencers" element={<AIContent />} />
+              <Route path="/services/digital-invitations" element={<DigitalInvitations />} />
+            </Routes>
+          </div>
+          
+          <Footer />
         </div>
-        
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </>
   );
 }
