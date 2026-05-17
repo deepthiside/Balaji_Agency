@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen w-full flex flex-col bg-black overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <Galaxy 
+        <Galaxy
           mouseRepulsion
           mouseInteraction
           density={0.8}
@@ -26,7 +26,7 @@ export default function HeroSection() {
       <div className="relative z-10 flex flex-col flex-1">
         {/* Hero Content */}
         <div className="flex-1 flex flex-col items-center justify-center pt-32 px-6 md:px-12 text-center">
-          
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -101,10 +101,10 @@ export default function HeroSection() {
         >
           <span className="text-[10px] tracking-[0.2em] uppercase text-white/30">Integrated with</span>
           <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 grayscale opacity-30 hover:grayscale-0 hover:opacity-60 transition-all duration-700">
-             <span className="text-xl md:text-2xl font-bold tracking-tighter">GOOGLE</span>
-             <span className="text-xl md:text-2xl font-bold tracking-tighter">META</span>
-             <span className="text-xl md:text-2xl font-bold tracking-tighter">ADOBE</span>
-             <span className="text-xl md:text-2xl font-bold tracking-tighter">SHOPIFY</span>
+            <span className="text-xl md:text-2xl font-bold tracking-tighter">GOOGLE</span>
+            <span className="text-xl md:text-2xl font-bold tracking-tighter">META</span>
+            <span className="text-xl md:text-2xl font-bold tracking-tighter">ADOBE</span>
+            <span className="text-xl md:text-2xl font-bold tracking-tighter">SHOPIFY</span>
           </div>
         </motion.div>
       </div>

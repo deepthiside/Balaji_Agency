@@ -4,6 +4,11 @@
   left: 0;
   right: 0;
   z-index: 999;
+  pointer-events: none;
+}
+
+.pill-nav-container * {
+  pointer-events: auto;
 }
 
 @media (max-width: 768px) {

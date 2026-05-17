@@ -79,7 +79,15 @@ export default function BlogPost() {
   if (!post) return null;
 
   return (
-    <div className="bg-black min-h-screen text-white font-body selection:bg-purple-500/30">
+    <div className="bg-black min-h-screen text-white font-body selection:bg-purple-500/30 relative">
+      {/* Floating Back Button in top-left corner */}
+      <Link 
+        to="/blog" 
+        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white/70 hover:text-white backdrop-blur-md transition-all duration-300 group shadow-xl text-xs font-medium font-body tracking-wider uppercase"
+      >
+        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        <span>Back to Blog</span>
+      </Link>
       
       {/* Hero Image */}
       <div className="w-full h-[50vh] md:h-[60vh] relative overflow-hidden pt-20">

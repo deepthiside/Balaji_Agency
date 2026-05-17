@@ -68,11 +68,20 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    <div className="bg-black min-h-screen text-white font-body selection:bg-purple-500/30 overflow-hidden">
+    <div className="bg-black min-h-screen text-white font-body selection:bg-purple-500/30 overflow-hidden relative">
       <TargetCursor />
       
+      {/* Floating Back Button in top-left corner */}
+      <Link 
+        to="/" 
+        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white/70 hover:text-white backdrop-blur-md transition-all duration-300 group shadow-xl text-xs font-medium font-body tracking-wider uppercase"
+      >
+        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        <span>Back to Home</span>
+      </Link>
+      
       {/* Hero Content */}
-      <header className="pt-40 pb-20 px-6 max-w-5xl mx-auto text-center relative z-10">
+      <header className="pt-40 pb-20 px-6 max-w-5xl mx-auto text-left relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

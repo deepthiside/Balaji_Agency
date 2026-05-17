@@ -16,6 +16,15 @@ export default function ServicePage({ title, description, features, image }) {
       />
 
 
+      {/* Floating Back Button in top-left corner */}
+      <Link 
+        to="/#solutions" 
+        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white/70 hover:text-white backdrop-blur-md transition-all duration-300 group shadow-xl text-xs font-medium font-body tracking-wider uppercase"
+      >
+        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        <span>Back to Solutions</span>
+      </Link>
+
       <main className="relative z-10 pt-32 px-6 md:px-16 lg:px-24 pb-24 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           

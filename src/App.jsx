@@ -29,6 +29,7 @@ import BlogPage from './pages/BlogPage.jsx';
 import BlogPost from './pages/BlogPost.jsx';
 import PortfolioPage from './pages/PortfolioPage.jsx';
 
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   const navType = useNavigationType();

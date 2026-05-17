@@ -39,6 +39,24 @@ const CardSwap = ({
   easing = 'elastic',
   children
 }) => {
+  const [windowWidth, setWindowWidth] = React.useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const scale = windowWidth < 480 ? 0.62 : windowWidth < 768 ? 0.75 : windowWidth < 1024 ? 0.88 : 1;
+  const actualWidth = width * scale;
+  const actualHeight = height * scale;
+
+  // Compact card offsets on smaller screens to ensure they remain inside the screen layout
+  const actualCardDistance = cardDistance * scale * (windowWidth < 768 ? 0.45 : 0.7);
+  const actualVerticalDistance = verticalDistance * scale * (windowWidth < 768 ? 0.45 : 0.7);
+
   const config =
     easing === 'elastic'
       ? {
@@ -75,7 +93,7 @@ const CardSwap = ({
     const total = refs.length;
     refs.forEach((r, i) => {
       if (r.current) {
-        placeNow(r.current, makeSlot(i, cardDistance, verticalDistance, total), skewAmount);
+        placeNow(r.current, makeSlot(i, actualCardDistance, actualVerticalDistance, total), skewAmount);
       }
     });
 
@@ -85,6 +103,8 @@ const CardSwap = ({
       const [front, ...rest] = order.current;
       const elFront = refs[front].current;
       if (!elFront) return;
+      
+      tlRef.current?.kill();
       
       const tl = gsap.timeline();
       tlRef.current = tl;
@@ -99,7 +119,7 @@ const CardSwap = ({
       rest.forEach((idx, i) => {
         const el = refs[idx].current;
         if (!el) return;
-        const slot = makeSlot(i, cardDistance, verticalDistance, refs.length);
+        const slot = makeSlot(i, actualCardDistance, actualVerticalDistance, refs.length);
         tl.set(el, { zIndex: slot.zIndex }, 'promote');
         tl.to(
           el,
@@ -114,7 +134,7 @@ const CardSwap = ({
         );
       });
 
-      const backSlot = makeSlot(refs.length - 1, cardDistance, verticalDistance, refs.length);
+      const backSlot = makeSlot(refs.length - 1, actualCardDistance, actualVerticalDistance, refs.length);
       tl.addLabel('return', `promote+=${config.durMove * config.returnDelay}`);
       tl.call(
         () => {
@@ -142,34 +162,39 @@ const CardSwap = ({
 
     intervalRef.current = window.setInterval(swap, delay);
 
-    if (pauseOnHover) {
-      const node = container.current;
-      const pause = () => {
-        tlRef.current?.pause();
-        clearInterval(intervalRef.current);
-      };
-      const resume = () => {
-        tlRef.current?.play();
-        intervalRef.current = window.setInterval(swap, delay);
-      };
+    const node = container.current;
+    const pause = () => {
+      tlRef.current?.pause();
+      clearInterval(intervalRef.current);
+    };
+    const resume = () => {
+      tlRef.current?.play();
+      clearInterval(intervalRef.current);
+      intervalRef.current = window.setInterval(swap, delay);
+    };
+
+    if (pauseOnHover && node) {
       node.addEventListener('mouseenter', pause);
       node.addEventListener('mouseleave', resume);
-      return () => {
+    }
+
+    return () => {
+      clearInterval(intervalRef.current);
+      tlRef.current?.kill();
+      if (pauseOnHover && node) {
         node.removeEventListener('mouseenter', pause);
         node.removeEventListener('mouseleave', resume);
-        clearInterval(intervalRef.current);
-      };
-    }
-    return () => clearInterval(intervalRef.current);
+      }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
+  }, [actualCardDistance, actualVerticalDistance, delay, pauseOnHover, skewAmount, easing]);
 
   const rendered = childArr.map((child, i) =>
     isValidElement(child)
       ? cloneElement(child, {
           key: i,
           ref: refs[i],
-          style: { width, height, ...(child.props.style ?? {}) },
+          style: { width: actualWidth, height: actualHeight, ...(child.props.style ?? {}) },
           onClick: e => {
             child.props.onClick?.(e);
             onCardClick?.(i);
@@ -179,7 +204,7 @@ const CardSwap = ({
   );
 
   return (
-    <div ref={container} className="card-swap-container" style={{ width, height }}>
+    <div ref={container} className="card-swap-container" style={{ width: actualWidth, height: actualHeight }}>
       {rendered}
     </div>
   );

@@ -297,30 +297,27 @@ export default function DomeGallery({
 
   useGesture(
     {
-      onDragStart: ({ event }) => {
+      onDragStart: ({ xy: [x, y] }) => {
         if (focusedElRef.current) return;
         stopInertia();
-        const evt = event;
         draggingRef.current = true;
         movedRef.current = false;
         startRotRef.current = { ...rotationRef.current };
-        startPosRef.current = { x: evt.clientX, y: evt.clientY };
+        startPosRef.current = { x, y };
       },
-      onDrag: ({ event, last, velocity = [0, 0], direction = [0, 0], movement }) => {
+      onDrag: ({ last, velocity = [0, 0], direction = [0, 0], movement: [mx, my] }) => {
         if (focusedElRef.current || !draggingRef.current || !startPosRef.current) return;
-        const evt = event;
-        const dxTotal = evt.clientX - startPosRef.current.x;
-        const dyTotal = evt.clientY - startPosRef.current.y;
+        
         if (!movedRef.current) {
-          const dist2 = dxTotal * dxTotal + dyTotal * dyTotal;
+          const dist2 = mx * mx + my * my;
           if (dist2 > 16) movedRef.current = true;
         }
         const nextX = clamp(
-          startRotRef.current.x - dyTotal / dragSensitivity,
+          startRotRef.current.x - my / dragSensitivity,
           -maxVerticalRotationDeg,
           maxVerticalRotationDeg
         );
-        const nextY = wrapAngleSigned(startRotRef.current.y + dxTotal / dragSensitivity);
+        const nextY = wrapAngleSigned(startRotRef.current.y + mx / dragSensitivity);
         if (rotationRef.current.x !== nextX || rotationRef.current.y !== nextY) {
           rotationRef.current = { x: nextX, y: nextY };
           applyTransform(nextX, nextY);
@@ -331,8 +328,7 @@ export default function DomeGallery({
           const [dirX, dirY] = direction;
           let vx = vMagX * dirX;
           let vy = vMagY * dirY;
-          if (Math.abs(vx) < 0.001 && Math.abs(vy) < 0.001 && Array.isArray(movement)) {
-            const [mx, my] = movement;
+          if (Math.abs(vx) < 0.001 && Math.abs(vy) < 0.001) {
             vx = clamp((mx / dragSensitivity) * 0.02, -1.2, 1.2);
             vy = clamp((my / dragSensitivity) * 0.02, -1.2, 1.2);
           }

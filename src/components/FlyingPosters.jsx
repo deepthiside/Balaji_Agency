@@ -203,9 +203,14 @@ class Canvas {
     this.planeWidth = planeWidth;
     this.planeHeight = planeHeight;
     this.distortion = distortion;
-    this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
+    // Increase ease from 0.01 to a snappier 0.06
+    this.scroll = { ease: scrollEase || 0.06, current: 0, target: 0, last: 0 };
     this.cameraFov = cameraFov;
     this.cameraZ = cameraZ;
+    this.isDestroyed = false;
+    this.rafId = null;
+    this.lastWindowScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+
     AutoBind(this);
     this.createRenderer();
     this.createCamera();
@@ -253,6 +258,7 @@ class Canvas {
     });
   }
   onResize() {
+    if (this.isDestroyed || !this.container) return;
     const rect = this.container.getBoundingClientRect();
     this.screen = { width: rect.width, height: rect.height };
     this.renderer.setSize(this.screen.width, this.screen.height);
@@ -273,54 +279,69 @@ class Canvas {
   onTouchMove(e) {
     if (!this.isDown) return;
     const y = e.touches ? e.touches[0].clientY : e.clientY;
-    const distance = (this.start - y) * 0.1;
+    // Boost touch drag multiplier from 0.1 to 0.7 for responsiveness
+    const distance = (this.start - y) * 0.7;
     this.scroll.target = this.scroll.position + distance;
   }
   onTouchUp() { this.isDown = false; }
   onWheel(e) {
     const speed = e.deltaY;
-    this.scroll.target += speed * 0.015; // Increased from 0.005 to 0.015 for faster scrolling
+    // Boost wheel speed from 0.015 to 0.06
+    this.scroll.target += speed * 0.06;
+  }
+  onWindowScroll() {
+    if (this.isDestroyed) return;
+    const currentScrollY = window.scrollY;
+    const delta = currentScrollY - this.lastWindowScrollY;
+    this.lastWindowScrollY = currentScrollY;
+    // Rotate/spin posters smoothly with normal page scrolling
+    this.scroll.target += delta * 0.007;
   }
   update() {
+    if (this.isDestroyed) return;
     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
     if (this.medias) {
       this.medias.forEach(media => media.update(this.scroll));
     }
     this.renderer.render({ scene: this.scene, camera: this.camera });
     this.scroll.last = this.scroll.current;
-    requestAnimationFrame(this.update);
+    this.rafId = requestAnimationFrame(this.update);
   }
   addEventListeners() {
     window.addEventListener('resize', this.onResize);
-    window.addEventListener('wheel', this.onWheel);
-    window.addEventListener('mousewheel', this.onWheel);
-    window.addEventListener('mousedown', this.onTouchDown);
-    window.addEventListener('mousemove', this.onTouchMove);
-    window.addEventListener('mouseup', this.onTouchUp);
-    window.addEventListener('touchstart', this.onTouchDown);
-    window.addEventListener('touchmove', this.onTouchMove);
-    window.addEventListener('touchend', this.onTouchUp);
+    window.addEventListener('scroll', this.onWindowScroll, { passive: true });
+    
+    if (this.canvas) {
+      this.canvas.addEventListener('mousedown', this.onTouchDown);
+      this.canvas.addEventListener('mousemove', this.onTouchMove);
+      this.canvas.addEventListener('mouseup', this.onTouchUp);
+      this.canvas.addEventListener('mouseleave', this.onTouchUp);
+    }
   }
   destroy() {
+    this.isDestroyed = true;
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+    }
     window.removeEventListener('resize', this.onResize);
-    window.removeEventListener('wheel', this.onWheel);
-    window.removeEventListener('mousewheel', this.onWheel);
-    window.removeEventListener('mousedown', this.onTouchDown);
-    window.removeEventListener('mousemove', this.onTouchMove);
-    window.removeEventListener('mouseup', this.onTouchUp);
-    window.removeEventListener('touchstart', this.onTouchDown);
-    window.removeEventListener('touchmove', this.onTouchMove);
-    window.removeEventListener('touchend', this.onTouchUp);
+    window.removeEventListener('scroll', this.onWindowScroll);
+    if (this.canvas) {
+      this.canvas.removeEventListener('mousedown', this.onTouchDown);
+      this.canvas.removeEventListener('mousemove', this.onTouchMove);
+      this.canvas.removeEventListener('mouseup', this.onTouchUp);
+      this.canvas.removeEventListener('mouseleave', this.onTouchUp);
+    }
   }
 }
 
 export default function FlyingPosters({
-  items = [], planeWidth = 320, planeHeight = 320, distortion = 3, scrollEase = 0.01,
+  items = [], planeWidth = 320, planeHeight = 320, distortion = 3, scrollEase = 0.06,
   cameraFov = 45, cameraZ = 20, className, ...props
 }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const instanceRef = useRef(null);
+
   useEffect(() => {
     if (!containerRef.current) return;
     instanceRef.current = new Canvas({
@@ -334,24 +355,54 @@ export default function FlyingPosters({
       }
     };
   }, [items, planeWidth, planeHeight, distortion, scrollEase, cameraFov, cameraZ]);
+
   useEffect(() => {
     if (!canvasRef.current) return;
     const canvasEl = canvasRef.current;
+
     const handleWheel = e => {
       e.preventDefault();
-      if (instanceRef.current) { instanceRef.current.onWheel(e); }
+      if (instanceRef.current) { 
+        instanceRef.current.onWheel(e); 
+      }
     };
-    const handleTouchMove = e => { e.preventDefault(); };
+
+    const handleTouchStart = e => {
+      if (instanceRef.current) {
+        instanceRef.current.onTouchDown(e);
+      }
+    };
+
+    const handleTouchMove = e => {
+      e.preventDefault();
+      if (instanceRef.current) {
+        instanceRef.current.onTouchMove(e);
+      }
+    };
+
+    const handleTouchEnd = e => {
+      if (instanceRef.current) {
+        instanceRef.current.onTouchUp(e);
+      }
+    };
+
     canvasEl.addEventListener('wheel', handleWheel, { passive: false });
+    canvasEl.addEventListener('touchstart', handleTouchStart, { passive: true });
     canvasEl.addEventListener('touchmove', handleTouchMove, { passive: false });
+    canvasEl.addEventListener('touchend', handleTouchEnd, { passive: true });
+
     return () => {
       canvasEl.removeEventListener('wheel', handleWheel);
+      canvasEl.removeEventListener('touchstart', handleTouchStart);
       canvasEl.removeEventListener('touchmove', handleTouchMove);
+      canvasEl.removeEventListener('touchend', handleTouchEnd);
     };
   }, []);
+
   return (
     <div ref={containerRef} className={`posters-container ${className}`} {...props}>
       <canvas ref={canvasRef} className="posters-canvas" />
     </div>
   );
 }
+

@@ -192,6 +192,11 @@ const ScrollStack = ({
 
   const setupLenis = useCallback(() => {
     if (useWindowScroll) {
+      if (window.lenis) {
+        window.lenis.on('scroll', handleScroll);
+        lenisRef.current = window.lenis;
+        return window.lenis;
+      }
       const lenis = new Lenis({
         duration: 1.2,
         easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -272,7 +277,10 @@ const ScrollStack = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
       if (lenisRef.current) {
-        lenisRef.current.destroy();
+        lenisRef.current.off('scroll', handleScroll);
+        if (lenisRef.current !== window.lenis) {
+          lenisRef.current.destroy();
+        }
       }
       stackCompletedRef.current = false;
       cardsRef.current = [];
