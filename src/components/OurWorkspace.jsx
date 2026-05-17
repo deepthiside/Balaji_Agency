@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import FlyingPosters from './FlyingPosters';
 import Office1 from '../assets/images/Office1.jpeg';
@@ -21,6 +21,22 @@ const workspaceImages = [
 export default function OurWorkspace() {
   const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.883907038933!2d75.807865!3d26.844371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db60e34c9c10f%3A0x63351654c6061730!2sUDB%20Corporate%20Towers!5e0!3m2!1sen!2sin!4v1715535000000!5m2!1sen!2sin`;
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const planeWidth = isMobile ? 220 : 380;
+  const planeHeight = isMobile ? 280 : 480;
+  const cameraFov = isMobile ? 45 : 35;
+  const cameraZ = isMobile ? 20 : 25;
+
   return (
     <section id="workspace" className="relative min-h-screen bg-black py-24 px-6 md:px-16 lg:px-20 border-t border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -34,7 +50,7 @@ export default function OurWorkspace() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch h-[600px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch h-[800px] lg:h-[600px]">
           {/* Map Side */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -67,12 +83,12 @@ export default function OurWorkspace() {
           >
             <FlyingPosters
               items={workspaceImages}
-              planeWidth={380}
-              planeHeight={480}
+              planeWidth={planeWidth}
+              planeHeight={planeHeight}
               distortion={4}
               scrollEase={0.015}
-              cameraFov={35}
-              cameraZ={25}
+              cameraFov={cameraFov}
+              cameraZ={cameraZ}
             />
             <div className="absolute top-6 right-6 z-20">
               <div className="liquid-glass px-4 py-2 rounded-full text-[10px] text-white/50 uppercase tracking-widest font-body">

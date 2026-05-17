@@ -361,7 +361,10 @@ export default function FlyingPosters({
     const canvasEl = canvasRef.current;
 
     const handleWheel = e => {
-      e.preventDefault();
+      const isMobile = window.innerWidth <= 768;
+      if (!isMobile) {
+        e.preventDefault();
+      }
       if (instanceRef.current) { 
         instanceRef.current.onWheel(e); 
       }
@@ -374,7 +377,10 @@ export default function FlyingPosters({
     };
 
     const handleTouchMove = e => {
-      e.preventDefault();
+      const isMobile = window.innerWidth <= 768;
+      if (!isMobile) {
+        e.preventDefault();
+      }
       if (instanceRef.current) {
         instanceRef.current.onTouchMove(e);
       }
