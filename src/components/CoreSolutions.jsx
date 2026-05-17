@@ -98,7 +98,7 @@ export default function CoreSolutions() {
           </div>
 
           {/* Right Side CardSwap */}
-          <div className="relative h-[650px] flex items-center justify-center">
+          <div className="relative h-[420px] md:h-[650px] flex items-center justify-center">
             <CardSwap
               width={420}
               height={480}
@@ -111,19 +111,21 @@ export default function CoreSolutions() {
             >
               {solutions.map((item, index) => (
                 <Card key={index} className="flex flex-col">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-10`}>
-                    {item.icon}
+                  <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-4 md:mb-10`}>
+                    <div className="scale-75 md:scale-100">
+                      {item.icon}
+                    </div>
                   </div>
-                  <h3 className="text-3xl font-heading italic text-white mb-4 leading-tight">
+                  <h3 className="text-xl md:text-3xl font-heading italic text-white mb-2 md:mb-4 leading-tight">
                     {item.title}
                   </h3>
-                  <p className="text-white/50 font-body font-light text-base leading-relaxed">
+                  <p className="text-white/50 font-body font-light text-xs md:text-base leading-relaxed">
                     {item.description}
                   </p>
                   
-                  <div className="mt-auto flex items-center justify-between pt-8 border-t border-white/5">
-                    <span className="text-[10px] text-purple-400 font-bold tracking-[0.2em] uppercase">Phase {index + 1}</span>
-                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/40">
+                  <div className="mt-auto flex items-center justify-between pt-4 md:pt-8 border-t border-white/5">
+                    <span className="text-[9px] md:text-[10px] text-purple-400 font-bold tracking-[0.2em] uppercase">Phase {index + 1}</span>
+                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/5 flex items-center justify-center text-white/40 text-xs md:text-sm">
                       →
                     </div>
                   </div>

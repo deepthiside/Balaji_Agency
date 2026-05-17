@@ -59,12 +59,21 @@ const services = [
 ];
 
 export default function ServicesPage() {
+  const [isMobile, setIsMobile] = React.useState(false);
+
   useEffect(() => {
     document.title = "Our Services | Balaji Creatives - Digital Marketing & Automation Experts";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Explore Balaji Creatives wide range of services including Social Media Marketing, Web Development, AI Content, Photography, and Business Automation.');
     }
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -100,11 +109,11 @@ export default function ServicesPage() {
       {/* Scroll Stack Section */}
       <main className="relative z-10">
         <ScrollStack 
-          useWindowScroll={false} 
-          itemDistance={200} 
-          itemStackDistance={40} 
+          useWindowScroll={true} 
+          itemDistance={isMobile ? 120 : 200} 
+          itemStackDistance={isMobile ? 15 : 40} 
           stackPosition="12%" 
-          itemScale={0.04}
+          itemScale={0.03}
         >
           {services.map((service, index) => (
             <ScrollStackItem key={index}>
