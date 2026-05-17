@@ -279,15 +279,15 @@ class Canvas {
   onTouchMove(e) {
     if (!this.isDown) return;
     const y = e.touches ? e.touches[0].clientY : e.clientY;
-    // Boost touch drag multiplier from 0.1 to 0.7 for responsiveness
-    const distance = (this.start - y) * 0.7;
+    // Balanced touch drag multiplier for buttery smooth mobile dragging
+    const distance = (this.start - y) * 0.2;
     this.scroll.target = this.scroll.position + distance;
   }
   onTouchUp() { this.isDown = false; }
   onWheel(e) {
     const speed = e.deltaY;
-    // Boost wheel speed from 0.015 to 0.06
-    this.scroll.target += speed * 0.06;
+    // Balanced wheel speed multiplier for premium smooth desktop scrolling
+    this.scroll.target += speed * 0.02;
   }
   onWindowScroll() {
     if (this.isDestroyed) return;
@@ -295,7 +295,7 @@ class Canvas {
     const delta = currentScrollY - this.lastWindowScrollY;
     this.lastWindowScrollY = currentScrollY;
     // Rotate/spin posters smoothly with normal page scrolling
-    this.scroll.target += delta * 0.007;
+    this.scroll.target += delta * 0.003;
   }
   update() {
     if (this.isDestroyed) return;

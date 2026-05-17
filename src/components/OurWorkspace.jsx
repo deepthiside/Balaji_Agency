@@ -36,6 +36,7 @@ export default function OurWorkspace() {
   const planeHeight = isMobile ? 280 : 480;
   const cameraFov = isMobile ? 45 : 35;
   const cameraZ = isMobile ? 20 : 25;
+  const distortion = isMobile ? 0.3 : 3.0; // Reduce distortion on mobile to keep planes perfectly flat/stable!
 
   return (
     <section id="workspace" className="relative min-h-screen bg-black py-24 px-6 md:px-16 lg:px-20 border-t border-white/10 overflow-hidden">
@@ -85,7 +86,7 @@ export default function OurWorkspace() {
               items={workspaceImages}
               planeWidth={planeWidth}
               planeHeight={planeHeight}
-              distortion={4}
+              distortion={distortion}
               scrollEase={0.015}
               cameraFov={cameraFov}
               cameraZ={cameraZ}

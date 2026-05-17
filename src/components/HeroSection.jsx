@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Galaxy from './Galaxy.jsx';
 import BlurText from './BlurText.jsx';
 
@@ -64,9 +65,9 @@ export default function HeroSection() {
                 <path d="M7 17L17 7" /><path d="M7 7h10v10" />
               </svg>
             </a>
-            <a href="/portfolio" className="liquid-glass rounded-full px-10 py-4 text-sm font-medium text-white/80 hover:text-white border border-white/10 transition-colors">
+            <Link to="/portfolio" className="liquid-glass rounded-full px-10 py-4 text-sm font-medium text-white/80 hover:text-white border border-white/10 transition-colors">
               Explore Our Portfolio
-            </a>
+            </Link>
           </motion.div>
 
           {/* Minimal Stats Row */}
