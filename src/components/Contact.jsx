@@ -22,7 +22,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={contactHeaderRef} className="relative py-24 px-6 md:px-16 lg:px-20 bg-[#400B11] overflow-hidden border-t border-white/10">
+    <section id="contact" ref={contactHeaderRef} className="relative py-24 px-6 md:px-16 lg:px-20 bg-[#E3DAC9] overflow-hidden border-t border-[#1C1917]/10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 relative z-10">
         
         {/* Left Side */}
@@ -33,12 +33,12 @@ export default function Contact() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col flex-1"
         >
-          <div className="text-sm font-body text-white/70 mb-6 font-bold uppercase tracking-[0.2em] animate-pulse">// Contact Mission Control</div>
+          <div className="text-sm font-body text-[#1C1917]/70 mb-6 font-bold uppercase tracking-[0.2em] animate-pulse">// Contact Mission Control</div>
           
-          <h2 className="font-heading italic text-white text-5xl md:text-7xl leading-[1] md:leading-[0.9] tracking-tight md:tracking-[-3px]">
+          <h2 className="font-heading italic text-[#1C1917] text-5xl md:text-7xl leading-[1] md:leading-[0.9] tracking-tight md:tracking-[-3px]">
             <VariableProximity
               label="Let’s scale your brand together"
-              className="font-heading italic text-white"
+              className="font-heading italic text-[#1C1917]"
               fromFontVariationSettings="'wght' 400, 'opsz' 9"
               toFontVariationSettings="'wght' 1000, 'opsz' 40"
               containerRef={contactHeaderRef}
@@ -47,22 +47,22 @@ export default function Contact() {
             />
           </h2>
           
-          <p className="text-[#F5F3EF]/90 font-body font-light leading-relaxed max-w-xl mt-6">
+          <p className="text-[#1C1917]/90 font-body font-light leading-relaxed max-w-xl mt-6">
             Get in touch with our team to discuss your next big marketing campaign, creative strategy, or digital growth goals.
           </p>
 
           <div className="mt-10 flex flex-col gap-4">
-            <div className="bg-white/10 border border-white/10 shadow-sm rounded-full px-5 py-4 flex items-center gap-4 w-full md:w-fit text-white">
+            <div className="bg-white border border-stone-200/80 shadow-md rounded-full px-5 py-4 flex items-center gap-4 w-full md:w-fit text-[#1C1917]">
               <Mail className="w-5 h-5 text-[#B5C161]" />
-              <span className="text-white font-body text-sm font-medium">info@balajicreatives.com</span>
+              <span className="text-[#1C1917] font-body text-sm font-medium">info@balajicreatives.com</span>
             </div>
-            <div className="bg-white/10 border border-white/10 shadow-sm rounded-full px-5 py-4 flex items-center gap-4 w-full md:w-fit text-white">
+            <div className="bg-white border border-stone-200/80 shadow-md rounded-full px-5 py-4 flex items-center gap-4 w-full md:w-fit text-[#1C1917]">
               <Phone className="w-5 h-5 text-[#B5C161]" />
-              <span className="text-white font-body text-sm font-medium">+91 9672010821</span>
+              <span className="text-[#1C1917] font-body text-sm font-medium">+91 9672010821</span>
             </div>
-            <div className="bg-white/10 border border-white/10 shadow-sm rounded-full px-5 py-4 flex items-center gap-4 w-full md:w-fit text-white">
+            <div className="bg-white border border-stone-200/80 shadow-md rounded-full px-5 py-4 flex items-center gap-4 w-full md:w-fit text-[#1C1917]">
               <MapPin className="w-5 h-5 text-[#B5C161]" />
-              <span className="text-white font-body text-sm font-medium">Jaipur, Rajasthan</span>
+              <span className="text-[#1C1917] font-body text-sm font-medium">Jaipur, Rajasthan</span>
             </div>
           </div>
         </motion.div>
@@ -97,7 +97,7 @@ export default function Contact() {
                       type="text" 
                       placeholder="Your Name" 
                       required
-                      className="w-full bg-stone-50 border border-stone-200/80 rounded-2xl px-6 py-4 text-[#1C1917] placeholder-stone-400 font-body focus:outline-none focus:bg-white focus:border-[#8C2E20] focus:ring-1 focus:ring-[#8C2E20] transition-all"
+                      className="w-full bg-stone-50 border border-stone-200/80 rounded-2xl px-6 py-4 text-[#1C1917] placeholder-stone-400 font-body focus:outline-none focus:bg-white focus:border-[#A5C5E8] focus:ring-1 focus:ring-[#A5C5E8] transition-all"
                       value={formData.name}
                       onChange={e => setFormData({...formData, name: e.target.value})}
                     />
@@ -105,7 +105,7 @@ export default function Contact() {
                       type="email" 
                       placeholder="Your Email" 
                       required
-                      className="w-full bg-stone-50 border border-stone-200/80 rounded-2xl px-6 py-4 text-[#1C1917] placeholder-stone-400 font-body focus:outline-none focus:bg-white focus:border-[#8C2E20] focus:ring-1 focus:ring-[#8C2E20] transition-all"
+                      className="w-full bg-stone-50 border border-stone-200/80 rounded-2xl px-6 py-4 text-[#1C1917] placeholder-stone-400 font-body focus:outline-none focus:bg-white focus:border-[#A5C5E8] focus:ring-1 focus:ring-[#A5C5E8] transition-all"
                       value={formData.email}
                       onChange={e => setFormData({...formData, email: e.target.value})}
                     />
@@ -114,7 +114,7 @@ export default function Contact() {
                     type="button" 
                     onClick={nextStep}
                     disabled={!formData.name || !formData.email}
-                    className="w-full bg-[#1C1917] text-white rounded-full py-4 font-bold hover:bg-[#8C2E20] transition-all disabled:opacity-50"
+                    className="w-full bg-[#1C1917] text-white rounded-full py-4 font-bold hover:bg-[#A5C5E8] hover:text-[#1C1917] transition-all disabled:opacity-50"
                   >
                     Next Step
                   </button>
@@ -138,7 +138,7 @@ export default function Contact() {
                         onClick={() => setFormData({...formData, service: s})}
                         className={`px-4 py-3 rounded-xl border text-sm font-body transition-all ${
                           formData.service === s 
-                          ? 'bg-[#8C2E20] border-[#8C2E20] text-white shadow-md font-bold' 
+                          ? 'bg-[#A5C5E8] border-[#A5C5E8] text-[#1C1917] shadow-md font-bold' 
                           : 'bg-stone-50 border-stone-200 text-[#57534E] hover:border-stone-400 hover:bg-stone-100'
                         }`}
                       >
@@ -152,7 +152,7 @@ export default function Contact() {
                       type="button" 
                       onClick={nextStep}
                       disabled={!formData.service}
-                      className="flex-[2] bg-[#1C1917] text-white rounded-full py-4 font-bold hover:bg-[#8C2E20] transition-all"
+                      className="flex-[2] bg-[#1C1917] text-white rounded-full py-4 font-bold hover:bg-[#A5C5E8] hover:text-[#1C1917] transition-all"
                     >
                       Continue
                     </button>
@@ -172,7 +172,7 @@ export default function Contact() {
                   <textarea 
                     placeholder="Tell us about your project..." 
                     rows={4}
-                    className="w-full bg-stone-50 border border-stone-200/80 rounded-2xl px-6 py-4 text-[#1C1917] placeholder-stone-400 font-body focus:outline-none focus:bg-white focus:border-[#8C2E20] focus:ring-1 focus:ring-[#8C2E20] transition-all"
+                    className="w-full bg-stone-50 border border-stone-200/80 rounded-2xl px-6 py-4 text-[#1C1917] placeholder-stone-400 font-body focus:outline-none focus:bg-white focus:border-[#A5C5E8] focus:ring-1 focus:ring-[#A5C5E8] transition-all"
                     value={formData.message}
                     onChange={e => setFormData({...formData, message: e.target.value})}
                   />
@@ -180,7 +180,7 @@ export default function Contact() {
                     <button type="button" onClick={prevStep} className="flex-1 border border-stone-200 rounded-full py-4 text-[#57534E] font-bold hover:bg-stone-50 transition-colors">Back</button>
                     <button 
                       type="submit"
-                      className="flex-[2] bg-[#8C2E20] hover:bg-[#8C2E20]/90 text-white rounded-full py-4 font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#8C2E20]/10"
+                      className="flex-[2] bg-[#1C1917] hover:bg-[#1C1917]/95 text-white rounded-full py-4 font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#1C1917]/10"
                     >
                       Send Message <Send className="w-4 h-4" />
                     </button>
@@ -207,7 +207,7 @@ export default function Contact() {
                   <button 
                     type="button" 
                     onClick={() => setStep(1)}
-                    className="text-stone-400 hover:text-[#8C2E20] font-body text-sm underline"
+                    className="text-stone-400 hover:text-[#A5C5E8] font-body text-sm underline"
                   >
                     Send another message
                   </button>

@@ -6,7 +6,7 @@ import Noise from '../../components/Noise';
 
 export default function ServicePage({ title, description, features, image }) {
   return (
-    <div className="min-h-screen bg-[#400B11] text-white relative overflow-hidden selection:bg-[#B5C161]/30">
+    <div className="min-h-screen bg-[#E3DAC9] text-[#1C1917] relative overflow-hidden selection:bg-[#A5C5E8]/30 selection:text-[#1C1917]">
       <Noise 
         patternSize={250}
         patternScaleX={1}
@@ -19,7 +19,7 @@ export default function ServicePage({ title, description, features, image }) {
       {/* Floating Back Button in top-left corner */}
       <Link 
         to="/#solutions" 
-        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white/70 hover:text-white backdrop-blur-md transition-all duration-300 group shadow-xl text-xs font-medium font-body tracking-wider uppercase"
+        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50 hover:border-stone-300 text-stone-700 hover:text-[#59425A] backdrop-blur-md transition-all duration-300 group shadow-xl text-xs font-semibold font-body tracking-wider uppercase"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         <span>Back to Solutions</span>
@@ -33,11 +33,11 @@ export default function ServicePage({ title, description, features, image }) {
             animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.8 }}
           >
-            <div className="text-[#B5C161] font-body text-sm tracking-widest uppercase mb-4">// Service Excellence</div>
-            <h1 className="text-5xl md:text-7xl font-heading italic leading-[0.9] mb-8 tracking-tighter">
+            <div className="text-[#59425A] font-body text-sm tracking-widest uppercase mb-4">// Service Excellence</div>
+            <h1 className="text-5xl md:text-7xl font-heading italic leading-[0.9] mb-8 tracking-tighter text-[#1C1917]">
               {title}
             </h1>
-            <p className="text-xl text-white/70 font-body font-light leading-relaxed mb-12 max-w-xl">
+            <p className="text-xl text-[#1C1917]/70 font-body font-light leading-relaxed mb-12 max-w-xl">
               {description}
             </p>
 
@@ -48,10 +48,10 @@ export default function ServicePage({ title, description, features, image }) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + i * 0.1 }}
-                  className="liquid-glass p-6 rounded-3xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all"
+                  className="p-6 rounded-3xl border border-stone-200 bg-white hover:bg-stone-50 hover:shadow-lg transition-all shadow-xl shadow-stone-200/50"
                 >
-                  <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
-                  <p className="text-sm text-white/50 leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-lg font-heading italic text-[#1C1917] mb-2">{feature.title}</h3>
+                  <p className="text-sm text-[#1C1917]/60 leading-relaxed font-body font-light">{feature.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -64,7 +64,7 @@ export default function ServicePage({ title, description, features, image }) {
             transition={{ duration: 1, delay: 0.2 }}
             className="relative aspect-square rounded-[3rem] overflow-hidden group"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#B5C161]/20 to-transparent z-10 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#59425A]/20 to-transparent z-10 opacity-60 group-hover:opacity-100 transition-opacity"></div>
             <img 
               src={image} 
               alt={title} 
@@ -76,8 +76,8 @@ export default function ServicePage({ title, description, features, image }) {
       </main>
 
       {/* Background elements */}
-      <div className="fixed -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-[#B5C161]/10 rounded-full blur-[200px] pointer-events-none"></div>
-      <div className="fixed -top-1/4 -left-1/4 w-[600px] h-[600px] bg-white/5 rounded-full blur-[150px] pointer-events-none"></div>
+      <div className="fixed -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-[#59425A]/10 rounded-full blur-[200px] pointer-events-none"></div>
+      <div className="fixed -top-1/4 -left-1/4 w-[600px] h-[600px] bg-[#1C1917]/5 rounded-full blur-[150px] pointer-events-none"></div>
     </div>
   );
 }

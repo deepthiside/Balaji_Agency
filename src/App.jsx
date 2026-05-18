@@ -8,7 +8,7 @@ import Footer from './components/Footer.jsx';
 import MagicBento from './components/MagicBento.jsx';
 import OurClients from './components/OurClients.jsx';
 import Noise from './components/Noise.jsx';
-import PillNav from './components/PillNav.jsx';
+import CardNav from './components/CardNav.jsx';
 import logo from './assets/images/favicon.png';
 import WhoWeAre from './components/WhoWeAre.jsx';
 import CoreSolutions from './components/CoreSolutions.jsx';
@@ -44,12 +44,34 @@ const ScrollToTop = () => {
 };
 
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/about-us' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Services', href: '/services' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/#contact' },
+  {
+    label: "Explore",
+    bgColor: "#E3DAC9", // Bone Color
+    textColor: "#1C1917",
+    links: [
+      { label: "Home", href: "/", ariaLabel: "Home Page" },
+      { label: "About Us", href: "/about-us", ariaLabel: "Learn about us" },
+      { label: "Our Blog", href: "/blog", ariaLabel: "Read our articles" }
+    ]
+  },
+  {
+    label: "Capabilities",
+    bgColor: "#A5C5E8", // Light Blue
+    textColor: "#1C1917",
+    links: [
+      { label: "Services", href: "/services", ariaLabel: "Our services" },
+      { label: "Portfolio", href: "/portfolio", ariaLabel: "Our work and results" }
+    ]
+  },
+  {
+    label: "Connect",
+    bgColor: "#59425A", // Muted Plum
+    textColor: "#FAFAF9",
+    links: [
+      { label: "Send Message", href: "#contact", ariaLabel: "Get in touch" },
+      { label: "WhatsApp Direct", href: "https://wa.me/919352932900", ariaLabel: "WhatsApp us" }
+    ]
+  }
 ];
 
 const HomePage = () => {
@@ -94,14 +116,15 @@ export default function App() {
         <ScrollToTop />
         <WhatsAppButton />
         <div className="bg-[#FAFAF9] text-[#1C1917] min-h-screen flex flex-col transition-colors duration-500">
-          <PillNav 
+          <CardNav 
             logo={logo}
             logoAlt="Balaji Creatives Logo"
             items={navItems}
-            baseColor="#1C1917"
-            pillColor="#8C2E20"
-            hoveredPillTextColor="#ffffff"
-            pillTextColor="#1C1917"
+            baseColor="#FAFAF9"
+            menuColor="#1C1917"
+            buttonBgColor="#400B11"
+            buttonTextColor="#FAFAF9"
+            ease="power3.out"
           />
           
           <div className="flex-grow">

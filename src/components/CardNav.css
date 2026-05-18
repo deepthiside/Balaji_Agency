@@ -1,0 +1,320 @@
+.card-nav-container {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 900px;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.card-nav {
+  display: block;
+  height: 64px;
+  padding: 0;
+  background-color: rgba(250, 250, 249, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  will-change: height;
+  backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease;
+}
+
+.card-nav-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+  z-index: 2;
+}
+
+.card-nav-left-grp {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+}
+
+.hamburger-menu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 6px;
+  padding: 0 0.25rem;
+  transition: opacity 0.3s ease;
+}
+
+.hamburger-menu:hover .hamburger-line {
+  background-color: #B5C161; /* Olive Lime */
+}
+
+.hamburger-line {
+  width: 26px;
+  height: 2px;
+  background-color: #1C1917; /* Deep Charcoal */
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease,
+    background-color 0.3s ease;
+  transform-origin: 50% 50%;
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container a {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Direct Navigation Links in Navbar Center */
+.direct-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.direct-link {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1C1917; /* Deep Charcoal */
+  text-decoration: none;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.3s ease;
+}
+
+.direct-link:hover {
+  color: #B5C161; /* Olive Lime hover */
+}
+
+.direct-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #B5C161; /* Olive Lime */
+  transition: width 0.3s ease;
+}
+
+.direct-link:hover::after,
+.direct-link.active::after {
+  width: 100%;
+}
+
+.direct-link.active {
+  color: #400B11; /* Burgundy Maroon for active link */
+  font-weight: 600;
+}
+
+.card-nav-cta-button {
+  background-color: #400B11; /* Burgundy Maroon */
+  color: #FAFAF9;
+  border: none;
+  border-radius: 0.85rem;
+  padding: 0 1.25rem;
+  height: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(64, 11, 17, 0.2);
+}
+
+.card-nav-cta-button:hover {
+  background-color: #B5C161; /* Olive Lime */
+  color: #1C1917;
+  box-shadow: 0 4px 12px rgba(181, 193, 97, 0.3);
+}
+
+.card-nav-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px;
+  bottom: 0;
+  padding: 0.75rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-nav.open .card-nav-content {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nav-card {
+  height: calc(100% - 0.75rem);
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: 0.95rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 12px;
+  user-select: none;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.nav-card-label {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.3px;
+  opacity: 0.9;
+}
+
+.nav-card-links {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-card-link {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: rgba(250, 250, 249, 0.8);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+}
+
+.nav-card-link-icon {
+  font-size: 14px;
+  opacity: 0.6;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-card-link:hover {
+  color: #B5C161 !important; /* Force olive-lime hover */
+}
+
+.nav-card-link:hover .nav-card-link-icon {
+  transform: translate(2px, -2px);
+  opacity: 1;
+  color: #B5C161;
+}
+
+@media (max-width: 768px) {
+  .card-nav-container {
+    width: 92%;
+    top: 1rem;
+  }
+
+  .card-nav-top {
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .card-nav-left-grp {
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+
+  .hamburger-menu {
+    padding: 0;
+  }
+
+  .logo-container {
+    transform: none;
+  }
+
+  .logo {
+    height: 32px;
+  }
+
+  .direct-links {
+    display: none !important;
+  }
+
+  .card-nav-cta-button {
+    display: none;
+  }
+
+  .card-nav-content {
+    top: 60px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 0.5rem;
+    bottom: 0;
+    justify-content: flex-start;
+  }
+
+  .nav-card {
+    height: auto;
+    min-height: 70px;
+    flex: 1 1 auto;
+    max-height: none;
+    padding: 12px 16px;
+    gap: 4px;
+  }
+
+  .nav-card-label {
+    font-size: 16px;
+  }
+
+  .nav-card-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .nav-card-link {
+    font-size: 13px;
+  }
+}

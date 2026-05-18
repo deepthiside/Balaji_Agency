@@ -47,13 +47,13 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="bg-[#0F5A47] min-h-screen text-white font-body selection:bg-[#8C2E20]/20 overflow-hidden relative">
+    <div className="bg-[#A5C5E8] min-h-screen text-[#1C1917] font-body selection:bg-[#A5C5E8]/30 overflow-hidden relative">
       <TargetCursor />
       
       {/* Floating Back Button in top-left corner */}
       <Link 
         to="/" 
-        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50 hover:border-stone-300 text-stone-700 hover:text-[#8C2E20] backdrop-blur-md transition-all duration-300 group shadow-lg text-xs font-semibold font-body tracking-wider uppercase"
+        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50 hover:border-stone-300 text-stone-700 hover:text-[#59425A] backdrop-blur-md transition-all duration-300 group shadow-lg text-xs font-semibold font-body tracking-wider uppercase"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         <span>Back to Home</span>
@@ -67,10 +67,10 @@ export default function AboutPage() {
           transition={{ duration: 0.8 }}
         >
           <span className="text-xs tracking-[0.3em] uppercase text-[#B5C161] font-bold mb-4 block">// Who We Are</span>
-          <h1 className="font-heading italic text-6xl md:text-8xl lg:text-9xl mb-8 leading-none tracking-tighter text-white">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B5C161] via-[#F5F3EF] to-white">Us</span>
+          <h1 className="font-heading italic text-6xl md:text-8xl lg:text-9xl mb-8 leading-none tracking-tighter text-[#1C1917]">
+            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B5C161] via-[#1C1917] to-[#1C1917]">Us</span>
           </h1>
-          <p className="max-w-3xl text-[#F5F3EF]/90 text-lg md:text-2xl font-light leading-relaxed">
+          <p className="max-w-3xl text-[#1C1917]/90 text-lg md:text-2xl font-light leading-relaxed">
             Best Digital Marketing Agency with experienced digital experts and a proven track record of success. We are passionate about helping our clients achieve their goals.
           </p>
         </motion.div>
@@ -86,20 +86,20 @@ export default function AboutPage() {
           transition={{ duration: 0.8 }}
           className="mb-32 text-center"
         >
-          <div className="bg-white/10 rounded-3xl p-8 md:p-16 border border-white/20 shadow-2xl shadow-black/20">
-            <h2 className="text-3xl md:text-5xl font-heading italic tracking-tight mb-8 text-white">Take Your Brand to the Next Level</h2>
-            <p className="text-[#F5F3EF]/90 text-lg leading-relaxed max-w-4xl mx-auto mb-8">
+          <div className="bg-white rounded-3xl p-8 md:p-16 border border-stone-200 shadow-xl shadow-stone-200/50">
+            <h2 className="text-3xl md:text-5xl font-heading italic tracking-tight mb-8 text-[#1C1917]">Take Your Brand to the Next Level</h2>
+            <p className="text-[#1C1917]/95 text-lg leading-relaxed max-w-4xl mx-auto mb-8 font-light">
               Balaji Creatives is a Digital Marketing agency that specializes in helping businesses of all sizes to increase their online visibility and grow their brand. We have a deep understanding of the latest technologies and trends. We offer a wide range of services including Website Design and Development, Digital Marketing, E-commerce Solutions, and Mobile App Development.
             </p>
-            <Link to="/services" className="inline-flex items-center gap-2 text-[#B5C161] hover:text-[#B5C161]/80 font-bold transition-colors">
+            <Link to="/services" className="inline-flex items-center gap-2 text-[#59425A] hover:text-[#59425A]/80 font-bold transition-colors">
               Explore Our Services <ArrowLeft className="w-5 h-5 rotate-180" />
             </Link>
           </div>
         </motion.div>
 
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-heading italic tracking-tight mb-4 text-white">Why Choose Us?</h2>
-          <p className="text-[#F5F3EF]/90 max-w-2xl mx-auto">When it comes to choosing the right partner, Balaji Creatives stands out from the competition.</p>
+          <h2 className="text-4xl md:text-6xl font-heading italic tracking-tight mb-4 text-[#1C1917]">Why Choose Us?</h2>
+          <p className="text-[#1C1917]/90 max-w-2xl mx-auto">When it comes to choosing the right partner, Balaji Creatives stands out from the competition.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -110,13 +110,13 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/10 p-8 rounded-[2rem] border border-white/20 shadow-2xl shadow-black/20 hover:border-white/40 hover:bg-white/15 transition-all cursor-target group"
+              className="bg-white p-8 rounded-[2rem] border border-stone-200 shadow-xl shadow-stone-200/50 hover:border-stone-300 hover:bg-stone-50 transition-all cursor-target group"
             >
-              <div className="p-3 bg-white/10 border border-white/10 rounded-2xl inline-block mb-6 group-hover:scale-110 transition-transform">
+              <div className="p-3 bg-stone-50 border border-stone-200 rounded-2xl inline-block mb-6 group-hover:scale-110 transition-transform">
                 {reason.icon}
               </div>
-              <h3 className="text-2xl font-heading italic tracking-tight mb-4 text-white">{reason.title}</h3>
-              <p className="text-[#F5F3EF]/80 font-light leading-relaxed text-sm">
+              <h3 className="text-2xl font-heading italic tracking-tight mb-4 text-[#1C1917]">{reason.title}</h3>
+              <p className="text-[#1C1917]/80 font-light leading-relaxed text-sm font-body">
                 {reason.description}
               </p>
             </motion.div>

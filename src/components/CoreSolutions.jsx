@@ -13,20 +13,20 @@ const solutions = [
   {
     title: "Lead Generation Systems",
     description: "Landing pages, funnel building, conversion optimization, call and form tracking.",
-    icon: <Target className="w-8 h-8 text-[#8C2E20]" />,
-    color: "from-[#8C2E20]/15 to-[#8C2E20]/5"
+    icon: <Target className="w-8 h-8 text-[#1C1917]" />,
+    color: "from-[#1C1917]/15 to-[#1C1917]/5"
   },
   {
     title: "Content & Authority Building",
     description: "Blog optimization, content strategy, cluster of topics, on-page SEO, and copywriting.",
-    icon: <PenTool className="w-8 h-8 text-[#400B11]" />,
-    color: "from-[#400B11]/15 to-[#400B11]/5"
+    icon: <PenTool className="w-8 h-8 text-[#1C1917]" />,
+    color: "from-[#1C1917]/15 to-[#1C1917]/5"
   },
   {
     title: "Performance & Analytics",
     description: "User behavior recording, data mining, heatmaps, conversion insights, and reporting.",
-    icon: <BarChart3 className="w-8 h-8 text-[#0F5A47]" />,
-    color: "from-[#0F5A47]/15 to-[#0F5A47]/5"
+    icon: <BarChart3 className="w-8 h-8 text-[#1D3557]" />,
+    color: "from-[#A5C5E8]/35 to-[#A5C5E8]/10"
   },
   {
     title: "Local Business Growth",
@@ -37,20 +37,20 @@ const solutions = [
   {
     title: "Paid Marketing & Campaigns",
     description: "Google Ads, Meta Ads, Retargeting Campaigns, ROI Optimization.",
-    icon: <Zap className="w-8 h-8 text-[#8C2E20]" />,
-    color: "from-[#8C2E20]/15 to-[#8C2E20]/5"
+    icon: <Zap className="w-8 h-8 text-[#1C1917]" />,
+    color: "from-[#1C1917]/15 to-[#1C1917]/5"
   },
   {
     title: "Website Optimization & UX",
     description: "Faster, mobile-responsive, user interface/user experience, and technical bug fixes.",
-    icon: <Layout className="w-8 h-8 text-[#0F5A47]" />,
-    color: "from-[#0F5A47]/15 to-[#0F5A47]/5"
+    icon: <Layout className="w-8 h-8 text-[#1D3557]" />,
+    color: "from-[#A5C5E8]/35 to-[#A5C5E8]/10"
   }
 ];
 
 export default function CoreSolutions() {
   return (
-    <section id="solutions" className="relative bg-[#0F5A47] py-24 px-6 md:px-16 lg:px-20 border-t border-white/10 overflow-hidden">
+    <section id="solutions" className="relative bg-[#A5C5E8] py-24 px-6 md:px-16 lg:px-20 border-t border-[#1C1917]/10 overflow-hidden">
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[150px] pointer-events-none"></div>
 
@@ -64,7 +64,7 @@ export default function CoreSolutions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-sm font-body text-[#B5C161] mb-4 tracking-[0.3em] uppercase font-bold"
+              className="text-sm font-body text-[#1C1917] mb-4 tracking-[0.3em] uppercase font-bold"
             >
               // Strategic focus
             </motion.div>
@@ -73,7 +73,7 @@ export default function CoreSolutions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-heading italic text-white text-5xl md:text-7xl leading-none tracking-tight mb-8"
+              className="font-heading italic text-[#1C1917] text-5xl md:text-7xl leading-none tracking-tight mb-8"
             >
               Core Solutions
             </motion.h2>
@@ -82,16 +82,16 @@ export default function CoreSolutions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[#F5F3EF]/90 font-body text-lg max-w-md leading-relaxed mb-12"
+              className="text-[#1C1917]/90 font-body text-lg max-w-md leading-relaxed mb-12"
             >
               We don't just provide services; we build high-converting systems designed for long-term scale and brand authority.
             </motion.p>
 
             <div className="flex flex-wrap gap-4">
-              <div className="px-6 py-3 rounded-full border border-white/20 bg-white/10 text-white font-body text-sm font-semibold">
+              <div className="px-6 py-3 rounded-full border border-stone-200 bg-white text-[#1C1917] font-body text-sm font-semibold">
                 Strategic Growth
               </div>
-              <div className="px-6 py-3 rounded-full border border-white/20 bg-white/10 text-white font-body text-sm font-semibold">
+              <div className="px-6 py-3 rounded-full border border-stone-200 bg-white text-[#1C1917] font-body text-sm font-semibold">
                 AI Driven
               </div>
             </div>
@@ -124,7 +124,7 @@ export default function CoreSolutions() {
                   </p>
                   
                   <div className="mt-auto flex items-center justify-between pt-4 md:pt-8 border-t border-stone-200/60">
-                    <span className="text-[9px] md:text-[10px] text-[#8C2E20] font-bold tracking-[0.2em] uppercase">Phase {index + 1}</span>
+                    <span className="text-[9px] md:text-[10px] text-[#59425A] font-bold tracking-[0.2em] uppercase">Phase {index + 1}</span>
                     <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-stone-50 border border-stone-200/80 flex items-center justify-center text-[#1C1917]/50 text-xs md:text-sm">
                       →
                     </div>

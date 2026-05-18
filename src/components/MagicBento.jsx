@@ -28,13 +28,13 @@ const MagicBento = ({
   const gridRef = useRef(null);
 
   return (
-    <section id="services" className="bento-section bg-[#400B11] py-24 border-t border-white/10 relative overflow-hidden">
+    <section id="services" className="bento-section bg-[#E3DAC9] py-24 border-t border-[#1C1917]/10 relative overflow-hidden">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#B5C161]/8 rounded-full blur-[120px] pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-6 mb-12 relative z-10">
-        <div className="text-sm font-body text-white/70 mb-4 tracking-widest uppercase font-semibold">// Our Expertise</div>
-        <h2 className="font-heading italic text-white text-5xl md:text-7xl leading-none tracking-tight">
+        <div className="text-sm font-body text-[#1C1917]/70 mb-4 tracking-widest uppercase font-semibold">// Our Expertise</div>
+        <h2 className="font-heading italic text-[#1C1917] text-5xl md:text-7xl leading-none tracking-tight">
           Our Services
         </h2>
       </div>

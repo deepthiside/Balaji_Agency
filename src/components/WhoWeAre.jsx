@@ -8,7 +8,7 @@ export default function WhoWeAre() {
   const containerRef = useRef(null);
 
   return (
-    <section id="who-we-are" ref={containerRef} className="relative w-full py-20 px-6 md:px-16 lg:px-20 bg-[#0F5A47] overflow-hidden border-t border-white/10">
+    <section id="who-we-are" ref={containerRef} className="relative w-full py-20 px-6 md:px-16 lg:px-20 bg-[#A5C5E8] overflow-hidden border-t border-[#1C1917]/10">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center">
         <div className="flex-1">
           <motion.div
@@ -16,7 +16,7 @@ export default function WhoWeAre() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.6 }}
-            className="text-sm font-body text-white/70 font-semibold mb-6 animate-pulse"
+            className="text-sm font-body text-[#1C1917]/70 font-semibold mb-6 animate-pulse"
           >
             // Who We Are
           </motion.div>
@@ -26,11 +26,11 @@ export default function WhoWeAre() {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-heading italic text-white text-5xl md:text-6xl leading-[0.9] tracking-[-2px] mb-8"
+            className="font-heading italic text-[#1C1917] text-5xl md:text-6xl leading-[0.9] tracking-[-2px] mb-8"
           >
             <VariableProximity
               label="Balaji Creatives"
-              className="variable-proximity-demo font-heading italic text-white"
+              className="variable-proximity-demo font-heading italic text-[#1C1917]"
               fromFontVariationSettings="'wght' 400, 'opsz' 9"
               toFontVariationSettings="'wght' 1000, 'opsz' 40"
               containerRef={containerRef}
@@ -44,7 +44,7 @@ export default function WhoWeAre() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-[#F5F3EF]/90 font-body font-light text-lg mb-6 max-w-xl leading-relaxed"
+            className="text-[#1C1917]/90 font-body font-light text-lg mb-6 max-w-xl leading-relaxed"
           >
             Based in the vibrant heart of Jaipur, Balaji Creatives was born from a simple idea: blending cutting-edge AI technology with unparalleled creative vision. We are a team of strategists, designers, and innovators dedicated to pushing the boundaries of what's possible in digital marketing.
           </motion.p>
@@ -54,7 +54,7 @@ export default function WhoWeAre() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-[#F5F3EF]/90 font-body font-light text-lg max-w-xl leading-relaxed"
+            className="text-[#1C1917]/90 font-body font-light text-lg max-w-xl leading-relaxed"
           >
             Our mission is to help brands connect with their audiences in meaningful ways, using data-driven insights and stunning visuals to drive real growth.
           </motion.p>
@@ -67,7 +67,7 @@ export default function WhoWeAre() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="flex-1 w-full"
         >
-          <div className="bg-white/10 border border-white/20 shadow-2xl shadow-black/20 rounded-[2rem] p-2 aspect-[4/3] w-full">
+          <div className="bg-white border border-stone-200 shadow-xl shadow-stone-200/50 rounded-[2rem] p-2 aspect-[4/3] w-full">
             <div className="w-full h-full rounded-[1.8rem] bg-transparent overflow-hidden relative">
               <TiltedCard
                 imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2850&auto=format&fit=crop"
