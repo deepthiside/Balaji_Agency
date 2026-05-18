@@ -54,7 +54,7 @@ const navItems = [
 
 const HomePage = () => {
   return (
-    <main className="w-full bg-black text-white selection:bg-white/30 selection:text-white">
+    <main className="w-full bg-[#FAFAF9] text-[#1C1917] transition-colors duration-500">
       <HeroSection />
       
       <div className="relative">
@@ -63,13 +63,13 @@ const HomePage = () => {
           patternScaleX={5}
           patternScaleY={4.7}
           patternRefreshInterval={3}
-          patternAlpha={15}
+          patternAlpha={5}
         />
         <WhoWeAre />
         
         <MagicBento 
           enableBorderGlow={true}
-          glowColor="168, 85, 247"
+          glowColor="140, 46, 32"
         />
 
         <OurClients />
@@ -93,15 +93,15 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <WhatsAppButton />
-        <div className="bg-black text-white min-h-screen flex flex-col">
+        <div className="bg-[#FAFAF9] text-[#1C1917] min-h-screen flex flex-col transition-colors duration-500">
           <PillNav 
             logo={logo}
             logoAlt="Balaji Creatives Logo"
             items={navItems}
-            baseColor="#ffffff"
-            pillColor="#000000"
-            hoveredPillTextColor="#000000"
-            pillTextColor="#ffffff"
+            baseColor="#1C1917"
+            pillColor="#8C2E20"
+            hoveredPillTextColor="#ffffff"
+            pillTextColor="#1C1917"
           />
           
           <div className="flex-grow">

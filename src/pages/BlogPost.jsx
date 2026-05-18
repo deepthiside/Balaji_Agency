@@ -79,11 +79,11 @@ export default function BlogPost() {
   if (!post) return null;
 
   return (
-    <div className="bg-black min-h-screen text-white font-body selection:bg-purple-500/30 relative">
+    <div className="bg-[#59425A] min-h-screen text-white font-body selection:bg-[#B5C161]/30 relative">
       {/* Floating Back Button in top-left corner */}
       <Link 
         to="/blog" 
-        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white/70 hover:text-white backdrop-blur-md transition-all duration-300 group shadow-xl text-xs font-medium font-body tracking-wider uppercase"
+        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50 hover:border-stone-300 text-stone-700 hover:text-[#8C2E20] backdrop-blur-md transition-all duration-300 group shadow-lg text-xs font-semibold font-body tracking-wider uppercase"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         <span>Back to Blog</span>
@@ -91,20 +91,20 @@ export default function BlogPost() {
       
       {/* Hero Image */}
       <div className="w-full h-[50vh] md:h-[60vh] relative overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#59425A]/95 z-10" />
         <img 
           src={post.image} 
           alt={post.title} 
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 z-20 max-w-5xl mx-auto">
-          <div className="bg-purple-500/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-medium text-purple-300 border border-purple-500/30 inline-block mb-6">
+          <div className="bg-[#B5C161] text-[#1C1917] px-4 py-1.5 rounded-full text-xs font-semibold border border-[#B5C161] inline-block mb-6 shadow-md">
             {post.category}
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading italic tracking-tight leading-tight mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading italic tracking-tight leading-tight mb-6 text-white">
             {post.title}
           </h1>
-          <div className="flex items-center gap-6 text-sm text-white/60">
+          <div className="flex items-center gap-6 text-sm text-white/80">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               <span>{post.date}</span>
@@ -123,15 +123,15 @@ export default function BlogPost() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="prose prose-invert prose-lg md:prose-xl prose-p:text-white/80 prose-headings:font-heading prose-headings:italic prose-a:text-purple-400 hover:prose-a:text-purple-300 w-full max-w-none"
+          className="prose prose-invert prose-lg md:prose-xl prose-p:text-[#FAFAF9]/90 prose-p:font-normal prose-headings:text-white prose-headings:font-heading prose-headings:italic prose-a:text-[#B5C161] hover:prose-a:text-[#B5C161]/80 prose-strong:text-white prose-li:text-[#FAFAF9]/90 prose-ol:text-[#FAFAF9]/90 w-full max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
         
-        <div className="mt-20 pt-10 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
-          <p className="text-white/50 text-sm">Share this article with your network.</p>
+        <div className="mt-20 pt-10 border-t border-white/15 flex flex-col sm:flex-row justify-between items-center gap-6">
+          <p className="text-[#F5F3EF]/60 text-sm font-semibold">Share this article with your network.</p>
           <div className="flex gap-4">
             {['Twitter', 'LinkedIn', 'Facebook'].map((platform) => (
-              <button key={platform} className="px-6 py-2 rounded-full border border-white/20 text-sm hover:bg-white/10 transition-colors">
+              <button key={platform} className="px-6 py-2 rounded-full border border-white/20 bg-white/10 text-white text-sm font-semibold hover:bg-[#B5C161] hover:border-[#B5C161] hover:text-[#1C1917] transition-all shadow-sm">
                 {platform}
               </button>
             ))}

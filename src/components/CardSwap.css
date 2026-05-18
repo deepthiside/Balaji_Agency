@@ -10,10 +10,10 @@
   top: 50%;
   left: 50%;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: #09090b;
+  border: 1px solid rgba(28, 25, 23, 0.08);
+  background: #ffffff;
   padding: 1.25rem;
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 25px 50px -12px rgba(28, 25, 23, 0.06), 0 0 0 1px rgba(28, 25, 23, 0.02);
   
   transform-style: preserve-3d;
   will-change: transform;

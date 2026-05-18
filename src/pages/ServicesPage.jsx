@@ -1,189 +1,217 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Sparkles, Megaphone, Globe, Camera, Zap, Heart, Settings } from 'lucide-react';
-import ScrollStack, { ScrollStackItem } from '../components/ScrollStack';
+import { ArrowLeft, Sparkles, Megaphone, Globe, Camera, Zap, Heart, Settings, CheckCircle } from 'lucide-react';
 import TargetCursor from '../components/TargetCursor';
 import './ServicesPage.css';
 
 const services = [
   {
     title: "Social Media Marketing",
-    icon: <Megaphone className="w-8 h-8 text-purple-400" />,
-    content: "In today’s digital world, social media is more than just posting content — it’s about building a strong online presence, engaging your audience, and turning followers into loyal customers. At Balaji Creatives, our Social Media Marketing services help brands grow through creative strategies, consistent branding, and audience-focused content.",
-    details: "We create powerful marketing campaigns for platforms like Instagram, Facebook, LinkedIn, and YouTube to increase brand awareness, customer engagement, and lead generation. Our team focuses on content creation, hashtag strategy, audience targeting, trend analysis, and performance tracking to deliver measurable results.",
-    keywords: ["Social Media Marketing Services", "Instagram Marketing", "Facebook Marketing", "Digital Branding", "Social Media Strategy", "Online Brand Growth", "Content Marketing Agency", "Social Media Management", "Business Promotion Online", "Creative Marketing Solutions"]
+    icon: <Megaphone className="w-8 h-8 text-[#B5C161]" />,
+    image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop",
+    content: "In today’s digital world, social media is more than just posting content — it’s about building a strong online presence, engaging your audience, and turning followers into loyal customers.",
+    details: "At Balaji Creatives, our Social Media Marketing services help brands grow through creative strategies, consistent branding, and audience-focused content. We manage and grow your brand on Instagram, Facebook, LinkedIn, and YouTube, focusing on audience targeting, trend analysis, and performance tracking.",
+    keywords: ["Social Media Strategy", "Instagram Marketing", "Facebook Marketing", "Digital Branding", "Content Creation", "Social Media Management", "Online Brand Growth"]
   },
   {
     title: "Social Media Advertising",
-    icon: <Zap className="w-8 h-8 text-blue-400" />,
-    content: "Paid advertising on social media is one of the fastest ways to reach your target audience and generate quality leads. Balaji Creatives specializes in high-performing social media advertising campaigns designed to maximize ROI and business growth.",
-    details: "We create and manage ad campaigns across Facebook Ads, Instagram Ads, Google Ads, and LinkedIn Ads. From audience research and ad creatives to conversion optimization and analytics, our experts ensure every campaign is optimized for performance.",
-    keywords: ["Social Media Advertising", "Facebook Ads Agency", "Instagram Ads Services", "PPC Advertising", "Online Advertising Company", "Lead Generation Services", "Paid Marketing Campaigns", "Google Ads Management", "Digital Advertising Experts", "ROI Marketing"]
+    icon: <Zap className="w-8 h-8 text-[#B5C161]" />,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+    content: "Paid advertising on social media is one of the fastest ways to reach your target audience, drive immediate traffic, and generate high-quality leads.",
+    details: "We design, write, and manage high-converting ad campaigns across Facebook Ads, Instagram Ads, Google Ads, and LinkedIn Ads. From target audience research and persuasive ad creatives to conversion optimization and continuous analytics, we maximize your ROI.",
+    keywords: ["Social Media Advertising", "Facebook Ads", "Instagram Ads", "PPC Campaigns", "Google Ads", "Lead Generation", "ROI Optimization"]
   },
   {
     title: "Website Development",
-    icon: <Globe className="w-8 h-8 text-emerald-400" />,
-    content: "A website is the digital identity of your business. At Balaji Creatives, we develop modern, responsive, and SEO-friendly websites that help businesses stand out online.",
-    details: "Our Website Development services include business websites, portfolio websites, eCommerce stores, landing pages, and custom web solutions. We focus on user-friendly design, fast loading speed, mobile responsiveness, and search engine optimization to improve visibility and customer experience.",
-    keywords: ["Website Development Company", "Responsive Website Design", "SEO-Friendly Websites", "Business Website Development", "eCommerce Website", "Web Design Services", "Custom Website Solutions", "Professional Website Developers", "Mobile Responsive Websites", "Modern Web Development"]
+    icon: <Globe className="w-8 h-8 text-[#B5C161]" />,
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop",
+    content: "Your website is the digital face of your brand. We design and build responsive, fast, and SEO-friendly sites that convert visitors into buyers.",
+    details: "Whether you need a sleek landing page, a professional corporate portfolio, a dynamic startup platform, or a robust eCommerce store, we build custom solutions tailored to your unique objectives. Our designs ensure smooth UX and fast loading speeds.",
+    keywords: ["Web Development", "UI/UX Design", "eCommerce Store", "Responsive Design", "SEO Optimized", "Custom Web Apps", "Page Speed Optimization"]
   },
   {
-    title: "Photography",
-    icon: <Camera className="w-8 h-8 text-rose-400" />,
-    content: "Visual content plays a major role in digital branding. Professional photography helps businesses create a strong impression and connect emotionally with customers. Balaji Creatives provides high-quality photography services for brands, products, events, and social media campaigns.",
-    details: "Our photography team captures creative and professional visuals that enhance your marketing materials, social media posts, websites, and advertisements. From product photography to corporate shoots and event coverage, we ensure every image represents your brand perfectly.",
-    keywords: ["Professional Photography Services", "Product Photography", "Brand Photography", "Event Photography", "Creative Photoshoots", "Commercial Photography", "Social Media Photography", "Digital Branding Photography", "Professional Visual Content", "Photography Agency"]
+    title: "Photography & Videography",
+    icon: <Camera className="w-8 h-8 text-[#B5C161]" />,
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+    content: "Premium visuals separate elite businesses from generic ones. We capture, produce, and edit high-quality content that narrates your brand story.",
+    details: "Our expert team handles professional product shoots, fashion photoshoots, corporate events, and engaging short-form video content (Reels/TikToks) designed to stand out on social media feeds and websites, evoking customer trust.",
+    keywords: ["Brand Photography", "Product Shoots", "Commercial Photography", "Reels Production", "Event Coverage", "Visual Storytelling", "High-End Video Editing"]
   },
   {
     title: "AI Content & Influencers",
-    icon: <Sparkles className="w-8 h-8 text-amber-400" />,
-    content: "AI-powered content creation is transforming digital marketing. At Balaji Creatives, we combine artificial intelligence with creativity to deliver engaging content and influencer marketing strategies that drive results.",
-    details: "We create AI-generated social media content, captions, ad copies, blog content, and personalized marketing campaigns. Our influencer marketing services help brands collaborate with creators and influencers to increase reach, trust, and audience engagement.",
-    keywords: ["AI Content Creation", "Influencer Marketing Services", "AI Digital Marketing", "Social Media Influencers", "Content Creation Agency", "AI Marketing Solutions", "Brand Collaboration", "Digital Content Strategy", "Creative Marketing Agency", "Online Influencer Promotion"]
+    icon: <Sparkles className="w-8 h-8 text-[#B5C161]" />,
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
+    content: "Embrace the future of automated brand presence. We merge advanced artificial intelligence with real creator influence for maximum reach.",
+    details: "We streamline your pipeline with AI-assisted copywriting, personalized customer campaigns, and optimized content schedules. Combined with our influencer matchmaking services, we connect your brand with creators to build authentic consumer trust.",
+    keywords: ["AI Content Creation", "Influencer Marketing", "AI Copywriting", "Creator Collaborations", "Automated Schedules", "Brand Matchmaking", "Digital Innovation"]
   },
   {
     title: "Digital Invitations",
-    icon: <Heart className="w-8 h-8 text-pink-400" />,
-    content: "Digital invitations are a modern and creative way to invite guests for weddings, corporate events, birthdays, and special occasions. Balaji Creatives designs attractive and personalized digital invitations that leave a lasting impression.",
-    details: "We create animated invitations, video invitations, e-invites, and interactive invitation designs tailored to your event theme and style. Our digital invitations are easy to share on WhatsApp, email, and social media platforms.",
-    keywords: ["Digital Invitation Design", "Wedding E-Invites", "Animated Invitations", "Video Invitations", "Online Invitation Cards", "Creative Invitation Design", "Digital Event Invitations", "WhatsApp Invitations", "Personalized Invitations", "Modern Invitation Services"]
+    icon: <Heart className="w-8 h-8 text-[#B5C161]" />,
+    image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop",
+    content: "Ditch static paper templates. We craft elegant, modern, and interactive digital invitations that leave a memorable mark.",
+    details: "From stunning animated wedding e-invites to interactive corporate invites and dynamic event brochures, we build responsive pages and high-end video invitations easily shareable via WhatsApp, email, or social media.",
+    keywords: ["Digital Invitations", "Wedding E-Invites", "Animated Video Invites", "Interactive Event Cards", "WhatsApp Invitations", "Custom Invitation Design", "Elegant E-Brochures"]
   },
   {
-    title: "Automations",
-    icon: <Settings className="w-8 h-8 text-indigo-400" />,
-    content: "Business automation helps companies save time, reduce manual work, and improve efficiency. Balaji Creatives provides smart automation solutions for businesses to streamline workflows and improve customer experiences.",
-    details: "Our automation services include WhatsApp Automation, Email Automation, CRM Integration, Chatbots, Lead Management Systems, AI Automation, and Social Media Scheduling. We help businesses automate repetitive tasks, improve communication, and increase productivity using modern digital tools.",
-    keywords: ["Business Automation Services", "WhatsApp Automation", "AI Automation Solutions", "CRM Integration", "Chatbot Development", "Marketing Automation", "Workflow Automation", "Automated Lead Generation", "Digital Business Solutions", "Smart Automation Services"]
+    title: "Business Automations",
+    icon: <Settings className="w-8 h-8 text-[#B5C161]" />,
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+    content: "Scale your business without scaling manual work. We implement smart automation pipelines that work for you 24/7.",
+    details: "We build customized WhatsApp automations, smart AI chatbots, automated lead capture pipelines, email drip sequences, and cross-platform CRM integrations to eliminate repetitive tasks, saving your team valuable hours every week.",
+    keywords: ["Business Automation", "WhatsApp Chatbots", "Lead Generation Funnels", "CRM Integrations", "Email Campaigns", "Workflow Optimization", "AI Customer Support"]
   }
 ];
 
 export default function ServicesPage() {
-  const [isMobile, setIsMobile] = React.useState(false);
-
   useEffect(() => {
-    document.title = "Our Services | Balaji Creatives - Digital Marketing & Automation Experts";
+    window.scrollTo(0, 0);
+    document.title = "Our Services | Balaji Creatives";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Explore Balaji Creatives wide range of services including Social Media Marketing, Web Development, AI Content, Photography, and Business Automation.');
+      metaDescription.setAttribute('content', 'Explore our wide range of services including Social Media Marketing, Web Development, AI Content, Photography, and Business Automation.');
     }
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
-    <div className="bg-black min-h-screen text-white font-body selection:bg-purple-500/30 overflow-hidden relative">
+    <div className="services-page bg-[#400B11] min-h-screen text-white font-body selection:bg-[#B5C161]/30 overflow-x-hidden relative">
       <TargetCursor />
       
-      {/* Floating Back Button in top-left corner */}
+      {/* Floating Back Button */}
       <Link 
         to="/" 
-        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white/70 hover:text-white backdrop-blur-md transition-all duration-300 group shadow-xl text-xs font-medium font-body tracking-wider uppercase"
+        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50 hover:border-stone-300 text-stone-700 hover:text-[#400B11] backdrop-blur-md transition-all duration-300 group shadow-lg text-xs font-semibold tracking-wider uppercase"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         <span>Back to Home</span>
       </Link>
       
-      {/* Hero Content */}
-      <header className="pt-40 pb-20 px-6 max-w-5xl mx-auto text-left relative z-10">
+      {/* Decorative Blur Background Glows */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#B5C161]/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[#59425A]/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#B5C161]/5 rounded-full blur-[180px] pointer-events-none z-0"></div>
+
+      {/* Hero Header */}
+      <header className="pt-36 pb-20 px-6 max-w-6xl mx-auto text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-xs tracking-[0.3em] uppercase text-purple-400 font-medium mb-4 block">// Mission Capabilities</span>
-          <h1 className="font-heading italic text-6xl md:text-8xl lg:text-9xl mb-8 leading-none tracking-tighter">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-white/50">Expertise</span>
+          <span className="text-xs tracking-[0.3em] uppercase text-[#B5C161] font-bold mb-4 block">// Core Capabilities</span>
+          <h1 className="font-heading italic text-5xl md:text-8xl mb-6 leading-none tracking-tight text-white">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B5C161] via-[#FAFAF9] to-white">Expertise</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-white/50 text-lg md:text-xl font-light leading-relaxed">
-            From digital storytelling to architectural code and AI-powered intelligence, we bridge the gap between imagination and measurable success.
+          <p className="max-w-2xl mx-auto text-[#F5F3EF]/90 text-base md:text-lg font-light leading-relaxed">
+            From digital storytelling to high-performance code, photography, and AI-powered automation, we bridge the gap between creative imagination and measurable business success.
           </p>
         </motion.div>
       </header>
 
-      {/* Scroll Stack Section */}
-      <main className="relative z-10">
-        <ScrollStack 
-          useWindowScroll={true} 
-          itemDistance={isMobile ? 120 : 200} 
-          itemStackDistance={isMobile ? 15 : 40} 
-          stackPosition="12%" 
-          itemScale={0.03}
-        >
-          {services.map((service, index) => (
-            <ScrollStackItem key={index}>
-              <div className="flex flex-col h-full cursor-target">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="p-3 bg-white/5 rounded-2xl border border-white/10">
-                    {service.icon}
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-heading italic tracking-tight">{service.title}</h2>
-                </div>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 flex-grow">
-                  <div className="space-y-6">
-                    <p className="text-lg md:text-xl text-white/90 font-light leading-relaxed">
-                      {service.content}
-                    </p>
-                    <p className="text-white/50 font-light leading-relaxed">
-                      {service.details}
-                    </p>
-                  </div>
-                  
-                  <div className="lg:border-l lg:border-white/10 lg:pl-12">
-                    <h3 className="text-xs uppercase tracking-widest text-white/30 mb-6 font-medium">Core Strategy Keywords</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {service.keywords.map((keyword, kidx) => (
-                        <span key={kidx} className="px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-medium hover:bg-purple-500/20 transition-colors">
-                          {keyword}
-                        </span>
-                      ))}
+      {/* Services List - Alternating layout for high performance and visual class */}
+      <main className="max-w-6xl mx-auto px-6 pb-28 relative z-10 space-y-20 md:space-y-32">
+        {services.map((service, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <motion.section 
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center`}
+            >
+              {/* Service Visual Column */}
+              <div className="w-full lg:w-1/2 group">
+                <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[4/3] w-full shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#400B11]/60 via-transparent to-transparent z-10 pointer-events-none"></div>
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-6 left-6 z-20 flex items-center gap-3 bg-black/40 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/10">
+                    <div className="p-1 bg-[#B5C161]/20 rounded-lg text-[#B5C161]">
+                      {React.cloneElement(service.icon, { className: "w-5 h-5" })}
                     </div>
+                    <span className="text-white text-sm font-semibold uppercase tracking-wider font-heading italic">0{index + 1}</span>
                   </div>
                 </div>
-                
-                <div className="mt-12 pt-8 border-t border-white/5 flex justify-between items-center text-white/20 text-xs tracking-widest uppercase">
-                  <span>Balaji Creatives // 0{index + 1}</span>
-                  <span className="hidden md:block">System Status: Operational</span>
-                </div>
-              </div>
-            </ScrollStackItem>
-          ))}
-          
-          {/* Why Choose Us Card */}
-          <ScrollStackItem>
-            <div className="flex flex-col h-full items-center justify-center text-center max-w-4xl mx-auto cursor-target">
-              <h2 className="text-4xl md:text-6xl font-heading italic mb-12">Why Choose Balaji Creatives?</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-                {[
-                  "Creative and result-driven strategies",
-                  "SEO-focused content and website solutions",
-                  "Professional branding and storytelling",
-                  "Advanced AI-powered marketing services",
-                  "Customized solutions for every business",
-                  "Dedicated support and innovative ideas"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 text-left">
-                    <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-                    <span className="text-white/80 font-body text-sm md:text-base">{item}</span>
-                  </div>
-                ))}
               </div>
 
-            </div>
-          </ScrollStackItem>
-        </ScrollStack>
+              {/* Service Info Column */}
+              <div className="w-full lg:w-1/2 space-y-6">
+                <div className="space-y-3">
+                  <h2 className="text-3xl md:text-5xl font-heading italic tracking-tight text-white">
+                    {service.title}
+                  </h2>
+                  <div className="h-1 w-20 bg-gradient-to-r from-[#B5C161] to-transparent rounded-full"></div>
+                </div>
+
+                <p className="text-lg md:text-xl text-[#FAFAF9] font-medium leading-relaxed font-body">
+                  {service.content}
+                </p>
+                <p className="text-[#F5F3EF]/80 font-light leading-relaxed font-body text-sm md:text-base">
+                  {service.details}
+                </p>
+
+                {/* Keywords Tag Cloud */}
+                <div className="pt-4 space-y-3">
+                  <h4 className="text-xs uppercase tracking-widest text-[#B5C161] font-bold font-body">// Strategic Highlights</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {service.keywords.map((keyword, kidx) => (
+                      <span 
+                        key={kidx} 
+                        className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/90 text-xs font-semibold hover:bg-[#B5C161]/10 hover:border-[#B5C161]/30 transition-all duration-300"
+                      >
+                        {keyword}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.section>
+          );
+        })}
+
+        {/* Why Choose Us Section */}
+        <motion.section 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="pt-16 border-t border-white/10 text-center max-w-4xl mx-auto"
+        >
+          <h2 className="text-4xl md:text-6xl font-heading italic mb-12 text-white">Why Choose Balaji Creatives?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full text-left">
+            {[
+              "Creative and result-driven campaign strategies",
+              "SEO-focused content writing and responsive website structures",
+              "Professional brand photography and cinematic visual storytelling",
+              "Advanced AI-powered marketing and high-performance lead models",
+              "Completely customized solutions for distinct business goals",
+              "Dedicated post-launch support and continuous innovations"
+            ].map((item, i) => (
+              <div 
+                key={i} 
+                className="flex items-start gap-4 p-5 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors shadow-lg"
+              >
+                <div className="p-1 bg-[#B5C161]/15 rounded-lg text-[#B5C161] mt-0.5">
+                  <CheckCircle className="w-4 h-4" />
+                </div>
+                <span className="text-[#F5F3EF] font-body text-sm md:text-base font-medium leading-relaxed">{item}</span>
+              </div>
+            ))}
+          </div>
+        </motion.section>
       </main>
 
-      {/* Footer Decoration */}
-      <div className="py-12 text-center opacity-0">
-        <p>Balaji Creatives</p>
-      </div>
+      {/* Footer Branding */}
+      <footer className="py-12 border-t border-white/5 text-center text-white/40 text-xs uppercase tracking-widest relative z-10">
+        <p>&copy; {new Date().getFullYear()} Balaji Creatives. All rights reserved.</p>
+      </footer>
     </div>
   );
 }

@@ -28,12 +28,12 @@ const MagicBento = ({
   const gridRef = useRef(null);
 
   return (
-    <section id="services" className="bento-section bg-black py-24 border-t border-white/10 relative overflow-hidden">
+    <section id="services" className="bento-section bg-[#400B11] py-24 border-t border-white/10 relative overflow-hidden">
       {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#B5C161]/8 rounded-full blur-[120px] pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-6 mb-12 relative z-10">
-        <div className="text-sm font-body text-white/70 mb-4 tracking-widest uppercase">// Our Expertise</div>
+        <div className="text-sm font-body text-white/70 mb-4 tracking-widest uppercase font-semibold">// Our Expertise</div>
         <h2 className="font-heading italic text-white text-5xl md:text-7xl leading-none tracking-tight">
           Our Services
         </h2>
@@ -59,10 +59,10 @@ const MagicBento = ({
               {/* Foreground Card with Gradient Border */}
               <Link
                 to={`/services/${card.id}`}
-                className={`${baseClassName} relative z-10 block w-full h-full rounded-[20px] overflow-hidden`}
+                className={`${baseClassName} relative z-10 block w-full h-full rounded-[20px] overflow-hidden shadow-xl shadow-black/35 hover:shadow-2xl hover:shadow-[#B5C161]/10 transition-all duration-500`}
                 style={{
                   border: '3px solid transparent',
-                  background: `linear-gradient(#100E14, #100E14) padding-box, ${gradient} border-box`,
+                  background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, ${gradient} border-box`,
                   aspectRatio: '4/3',
                   minHeight: '200px'
                 }}
@@ -115,26 +115,26 @@ const MagicBento = ({
                     src={card.image} 
                     alt={card.title}
                     loading="lazy"
-                    className="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500"
+                    className="w-full h-full object-cover opacity-[0.08] group-hover:opacity-[0.14] transition-opacity duration-500"
                   />
                   {/* Gradient Overlay for Readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
                 </div>
 
                 <div className="magic-bento-card__header relative z-10 flex justify-between items-start mb-12">
-                  <div className="magic-bento-card__label text-xs font-body text-white/40 tracking-widest uppercase">// 0{index + 1}</div>
-                  <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover:border-white/30 transition-colors">
-                    <svg className="w-5 h-5 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <div className="magic-bento-card__label text-xs font-body text-[#1C1917]/50 font-bold tracking-widest uppercase">// 0{index + 1}</div>
+                  <div className="w-10 h-10 rounded-full border border-stone-200/80 flex items-center justify-center bg-stone-50 backdrop-blur-sm group-hover:border-stone-300 group-hover:bg-[#8C2E20] group-hover:text-white transition-all duration-300">
+                    <svg className="w-5 h-5 text-stone-700 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M7 17L17 7" /><path d="M7 7h10v10" />
                     </svg>
                   </div>
                 </div>
                 
                 <div className="magic-bento-card__content relative z-10 mt-auto">
-                  <h3 className="magic-bento-card__title text-2xl md:text-3xl font-heading italic text-white mb-3 tracking-tight">
+                  <h3 className="magic-bento-card__title text-2xl md:text-3xl font-heading italic text-[#1C1917] mb-3 tracking-tight">
                     {card.title}
                   </h3>
-                  <p className="magic-bento-card__description text-sm text-white/50 font-body font-light leading-relaxed line-clamp-2">
+                  <p className="magic-bento-card__description text-sm text-[#57534E] font-body font-light leading-relaxed line-clamp-2">
                     {card.description}
                   </p>
                 </div>

@@ -110,11 +110,11 @@ export default function PortfolioPage() {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white pt-40 pb-24 px-6 md:px-16 lg:px-20 relative">
+    <div className="min-h-screen bg-[#0F5A47] text-white pt-40 pb-24 px-6 md:px-16 lg:px-20 relative selection:bg-[#B5C161]/30">
       {/* Floating Back Button in top-left corner */}
       <Link 
         to="/" 
-        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white/70 hover:text-white backdrop-blur-md transition-all duration-300 group shadow-xl text-xs font-medium font-body tracking-wider uppercase"
+        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50 hover:border-stone-300 text-stone-700 hover:text-[#8C2E20] backdrop-blur-md transition-all duration-300 group shadow-lg text-xs font-semibold font-body tracking-wider uppercase"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         <span>Back to Home</span>
@@ -126,7 +126,7 @@ export default function PortfolioPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-sm font-body text-purple-400 mb-4 tracking-[0.3em] uppercase font-bold"
+          className="text-sm font-body text-[#B5C161] mb-4 tracking-[0.3em] uppercase font-bold"
         >
           // Case Studies & Results
         </motion.div>
@@ -135,17 +135,17 @@ export default function PortfolioPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-heading italic text-5xl md:text-7xl lg:text-8xl leading-none tracking-tight mb-8"
+          className="font-heading italic text-5xl md:text-7xl lg:text-8xl leading-none tracking-tight mb-8 text-white"
         >
           Our Work Speaks <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Volumes.</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B5C161] via-[#FAFAF9] to-white">Volumes.</span>
         </motion.h1>
         
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-white/60 font-body text-lg max-w-2xl leading-relaxed"
+          className="text-[#F5F3EF]/90 font-body text-lg max-w-2xl leading-relaxed"
         >
           We don't just deliver beautiful designs and clever campaigns; we deliver measurable ROI, scalable growth, and market dominance for our clients.
         </motion.p>
@@ -154,10 +154,10 @@ export default function PortfolioPage() {
       {/* Stats Overview */}
       <div className="max-w-7xl mx-auto mb-24 grid grid-cols-2 md:grid-cols-4 gap-6">
         {[
-          { label: "Clients Scaled", value: "150+", icon: <Users className="w-6 h-6 text-purple-400 mb-4" /> },
-          { label: "Avg. ROI Increase", value: "312%", icon: <TrendingUp className="w-6 h-6 text-blue-400 mb-4" /> },
-          { label: "Leads Generated", value: "50k+", icon: <Target className="w-6 h-6 text-green-400 mb-4" /> },
-          { label: "Search Dominance", value: "Top 3", icon: <Search className="w-6 h-6 text-orange-400 mb-4" /> }
+          { label: "Clients Scaled", value: "150+", icon: <Users className="w-6 h-6 text-[#B5C161] mb-4" />, valueColor: "text-[#B5C161]" },
+          { label: "Avg. ROI Increase", value: "312%", icon: <TrendingUp className="w-6 h-6 text-[#B5C161] mb-4" />, valueColor: "text-[#B5C161]" },
+          { label: "Leads Generated", value: "50k+", icon: <Target className="w-6 h-6 text-[#B5C161] mb-4" />, valueColor: "text-[#B5C161]" },
+          { label: "Search Dominance", value: "Top 3", icon: <Search className="w-6 h-6 text-[#B5C161] mb-4" />, valueColor: "text-[#B5C161]" }
         ].map((stat, i) => (
           <motion.div
             key={i}
@@ -167,8 +167,8 @@ export default function PortfolioPage() {
             className="metric-box flex flex-col items-center md:items-start"
           >
             {stat.icon}
-            <h3 className="text-3xl md:text-4xl font-heading italic text-white mb-2">{stat.value}</h3>
-            <p className="text-sm font-body text-white/50 uppercase tracking-wider">{stat.label}</p>
+            <h3 className={`text-3xl md:text-4xl font-heading italic ${stat.valueColor} mb-2`}>{stat.value}</h3>
+            <p className="text-xs font-body text-[#F5F3EF]/60 font-bold uppercase tracking-wider">{stat.label}</p>
           </motion.div>
         ))}
       </div>
@@ -202,30 +202,30 @@ export default function PortfolioPage() {
               <div className="portfolio-image-container">
                 <img src={project.image} alt={project.title} className="portfolio-image" />
                 <div className="portfolio-overlay"></div>
-                <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-xs font-body text-white/80 uppercase tracking-widest">
+                <div className="absolute top-4 left-4 bg-[#B5C161] text-[#1C1917] px-3 py-1 rounded-full text-xs font-semibold border border-[#B5C161] uppercase tracking-widest">
                   {project.category}
                 </div>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-sm font-body text-purple-400 font-bold tracking-widest uppercase mb-1">{project.client}</p>
+                  <p className="text-sm font-body text-[#B5C161] font-bold tracking-widest uppercase mb-1">{project.client}</p>
                   <h3 className="text-2xl font-heading italic text-white leading-tight">{project.title}</h3>
                 </div>
               </div>
               
               <div className="p-6 md:p-8 flex-grow flex flex-col">
                 <div className="mb-6">
-                  <h4 className="text-sm font-body text-white/40 uppercase tracking-widest mb-2 border-b border-white/10 pb-2">The Challenge</h4>
-                  <p className="text-white/80 font-body text-sm leading-relaxed">{project.challenge}</p>
+                  <h4 className="text-xs font-body text-[#F5F3EF]/55 font-bold uppercase tracking-widest mb-2 border-b border-white/10 pb-2">// The Challenge</h4>
+                  <p className="text-[#F5F3EF]/80 font-body text-sm leading-relaxed">{project.challenge}</p>
                 </div>
                 <div className="mb-8">
-                  <h4 className="text-sm font-body text-white/40 uppercase tracking-widest mb-2 border-b border-white/10 pb-2">The Solution</h4>
-                  <p className="text-white/80 font-body text-sm leading-relaxed">{project.solution}</p>
+                  <h4 className="text-xs font-body text-[#F5F3EF]/55 font-bold uppercase tracking-widest mb-2 border-b border-white/10 pb-2">// The Solution</h4>
+                  <p className="text-[#F5F3EF]/80 font-body text-sm leading-relaxed">{project.solution}</p>
                 </div>
                 
                 <div className="mt-auto grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
                   {project.metrics.map((metric, i) => (
                     <div key={i} className="text-center">
-                      <div className="text-lg md:text-xl font-heading italic text-purple-400 mb-1">{metric.value}</div>
-                      <div className="text-[9px] md:text-[10px] font-body text-white/50 uppercase tracking-widest">{metric.label}</div>
+                      <div className="text-lg md:text-xl font-heading italic text-[#B5C161] font-bold mb-1">{metric.value}</div>
+                      <div className="text-[9px] md:text-[10px] font-body text-[#F5F3EF]/55 font-bold uppercase tracking-widest">{metric.label}</div>
                     </div>
                   ))}
                 </div>

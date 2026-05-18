@@ -8,7 +8,7 @@ import Noise from './Noise.jsx';
 export default function Footer() {
   const footerRef = useRef(null);
   return (
-    <footer ref={footerRef} className="relative bg-black overflow-hidden border-t border-white/10 px-6 md:px-16 lg:px-20 py-16">
+    <footer ref={footerRef} className="relative bg-[#180F19] overflow-hidden border-t border-white/10 px-6 md:px-16 lg:px-20 py-16">
 
       {/* Top Area */}
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-16 relative z-10">
@@ -22,10 +22,11 @@ export default function Footer() {
           className="flex-1"
         >
           <div className="flex items-center gap-4">
-            <div className="liquid-glass rounded-full flex items-center justify-center px-4 py-2">
+            <div className="bg-white/10 border border-white/10 shadow-sm rounded-full flex items-center justify-center px-4 py-2">
               <span className="font-heading italic text-white text-2xl leading-none pt-1">
                 <VariableProximity
                   label={'Balaji Creatives'}
+                  className="font-heading italic text-white"
                   fromFontVariationSettings="'wght' 400, 'opsz' 9"
                   toFontVariationSettings="'wght' 1000, 'opsz' 40"
                   containerRef={footerRef}
@@ -35,7 +36,7 @@ export default function Footer() {
               </span>
             </div>
           </div>
-          <p className="max-w-md text-white/60 font-body font-light leading-relaxed mt-5">
+          <p className="max-w-md text-[#F5F3EF]/75 font-body font-light leading-relaxed mt-5">
             Engineering humanity’s next frontier through cinematic digital marketing, AI-driven strategies, and immersive creative experiences.
           </p>
         </motion.div>
@@ -54,6 +55,7 @@ export default function Footer() {
             <h4 className="text-white font-body font-medium mb-5">
               <VariableProximity
                 label={'Navigation'}
+                className="text-white font-body font-medium"
                 fromFontVariationSettings="'wght' 400, 'opsz' 9"
                 toFontVariationSettings="'wght' 1000, 'opsz' 40"
                 containerRef={footerRef}
@@ -61,10 +63,10 @@ export default function Footer() {
                 falloff="linear"
               />
             </h4>
-            <a href="#home" className="text-white/60 hover:text-white transition-all duration-300 font-body text-sm">Home</a>
-            <a href="#services" className="text-white/60 hover:text-white transition-all duration-300 font-body text-sm">Services</a>
-            <a href="#our-work" className="text-white/60 hover:text-white transition-all duration-300 font-body text-sm">Our Work</a>
-            <a href="#who-we-are" className="text-white/60 hover:text-white transition-all duration-300 font-body text-sm">Who We Are</a>
+            <a href="#home" className="text-[#F5F3EF]/70 hover:text-[#B5C161] transition-all duration-300 font-body text-sm font-medium">Home</a>
+            <a href="#services" className="text-[#F5F3EF]/70 hover:text-[#B5C161] transition-all duration-300 font-body text-sm font-medium">Services</a>
+            <a href="#our-work" className="text-[#F5F3EF]/70 hover:text-[#B5C161] transition-all duration-300 font-body text-sm font-medium">Our Work</a>
+            <a href="#who-we-are" className="text-[#F5F3EF]/70 hover:text-[#B5C161] transition-all duration-300 font-body text-sm font-medium">Who We Are</a>
           </motion.div>
 
           {/* Company */}
@@ -78,6 +80,7 @@ export default function Footer() {
             <h4 className="text-white font-body font-medium mb-5">
               <VariableProximity
                 label={'Company'}
+                className="text-white font-body font-medium"
                 fromFontVariationSettings="'wght' 400, 'opsz' 9"
                 toFontVariationSettings="'wght' 1000, 'opsz' 40"
                 containerRef={footerRef}
@@ -85,10 +88,10 @@ export default function Footer() {
                 falloff="linear"
               />
             </h4>
-            <a href="#" className="text-white/60 hover:text-white transition-all duration-300 font-body text-sm">About</a>
-            <a href="#" className="text-white/60 hover:text-white transition-all duration-300 font-body text-sm">Capabilities</a>
-            <a href="#" className="text-white/60 hover:text-white transition-all duration-300 font-body text-sm">Partners</a>
-            <a href="#" className="text-white/60 hover:text-white transition-all duration-300 font-body text-sm">Contact</a>
+            <a href="#" className="text-[#F5F3EF]/70 hover:text-[#B5C161] transition-all duration-300 font-body text-sm font-medium">About</a>
+            <a href="#" className="text-[#F5F3EF]/70 hover:text-[#B5C161] transition-all duration-300 font-body text-sm font-medium">Capabilities</a>
+            <a href="#" className="text-[#F5F3EF]/70 hover:text-[#B5C161] transition-all duration-300 font-body text-sm font-medium">Partners</a>
+            <a href="#" className="text-[#F5F3EF]/70 hover:text-[#B5C161] transition-all duration-300 font-body text-sm font-medium">Contact</a>
           </motion.div>
 
           {/* Socials & Contact */}
@@ -102,24 +105,24 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-heading italic text-xl mb-4 relative inline-block">
                 Contact Us
-                <span className="absolute -bottom-1 left-0 w-8 h-[2px] bg-purple-500"></span>
+                <span className="absolute -bottom-1 left-0 w-8 h-[2px] bg-[#B5C161]"></span>
               </h4>
               <div className="flex flex-col gap-3 mt-4">
-                <div className="flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300 group">
-                  <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
-                    <MapPin className="w-4 h-4 text-purple-400" />
+                <div className="flex items-center gap-3 text-[#F5F3EF]/70 hover:text-[#B5C161] transition-colors duration-300 group">
+                  <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center group-hover:bg-[#B5C161]/10 transition-colors">
+                    <MapPin className="w-4 h-4 text-[#B5C161]" />
                   </div>
                   <span className="font-body text-sm">Jaipur, Rajasthan</span>
                 </div>
-                <div className="flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300 group">
-                  <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
-                    <Phone className="w-4 h-4 text-purple-400" />
+                <div className="flex items-center gap-3 text-[#F5F3EF]/70 hover:text-[#B5C161] transition-colors duration-300 group">
+                  <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center group-hover:bg-[#B5C161]/10 transition-colors">
+                    <Phone className="w-4 h-4 text-[#B5C161]" />
                   </div>
                   <span className="font-body text-sm">+91 9672010821</span>
                 </div>
-                <div className="flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300 group">
-                  <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
-                    <Mail className="w-4 h-4 text-purple-400" />
+                <div className="flex items-center gap-3 text-[#F5F3EF]/70 hover:text-[#B5C161] transition-colors duration-300 group">
+                  <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center group-hover:bg-[#B5C161]/10 transition-colors">
+                    <Mail className="w-4 h-4 text-[#B5C161]" />
                   </div>
                   <span className="font-body text-sm">info@balajicreatives.com</span>
                 </div>
@@ -133,7 +136,7 @@ export default function Footer() {
                   href="https://www.instagram.com/balaji_creatives?igsh=NjM3eGtsdmR4dHd6" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:bg-purple-500/20 transition-all duration-300 border border-white/10"
+                  className="w-10 h-10 rounded-full bg-white/10 text-white hover:text-[#180F19] hover:bg-[#B5C161] hover:border-[#B5C161] border border-white/10 shadow-sm flex items-center justify-center transition-all duration-300"
                 >
                   <FaInstagram className="w-5 h-5" />
                 </a>
@@ -141,7 +144,7 @@ export default function Footer() {
                   href="https://youtube.com/@balaji_creatives_agency?si=SXMb7FAXio_xbZ_R" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:bg-purple-500/20 transition-all duration-300 border border-white/10"
+                  className="w-10 h-10 rounded-full bg-white/10 text-white hover:text-[#180F19] hover:bg-[#B5C161] hover:border-[#B5C161] border border-white/10 shadow-sm flex items-center justify-center transition-all duration-300"
                 >
                   <FaYoutube className="w-5 h-5" />
                 </a>
@@ -149,7 +152,7 @@ export default function Footer() {
                   href="https://www.facebook.com/share/1VEEDrEQJL/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:bg-purple-500/20 transition-all duration-300 border border-white/10"
+                  className="w-10 h-10 rounded-full bg-white/10 text-white hover:text-[#180F19] hover:bg-[#B5C161] hover:border-[#B5C161] border border-white/10 shadow-sm flex items-center justify-center transition-all duration-300"
                 >
                   <FaFacebookF className="w-5 h-5" />
                 </a>
@@ -157,7 +160,7 @@ export default function Footer() {
                   href="https://pin.it/77sdnmyCh" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:bg-purple-500/20 transition-all duration-300 border border-white/10"
+                  className="w-10 h-10 rounded-full bg-white/10 text-white hover:text-[#180F19] hover:bg-[#B5C161] hover:border-[#B5C161] border border-white/10 shadow-sm flex items-center justify-center transition-all duration-300"
                 >
                   <FaPinterestP className="w-5 h-5" />
                 </a>
@@ -174,7 +177,7 @@ export default function Footer() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="max-w-7xl mx-auto mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-xs font-body text-white/40"
+        className="max-w-7xl mx-auto mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-xs font-body text-[#F5F3EF]/40"
       >
         <p>© 2026 Balaji Creatives. All rights reserved.</p>
         <p>Designed for the future of digital marketing.</p>

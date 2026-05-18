@@ -6,7 +6,7 @@ import Noise from '../../components/Noise';
 
 export default function ServicePage({ title, description, features, image }) {
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden selection:bg-purple-500/30">
+    <div className="min-h-screen bg-[#400B11] text-white relative overflow-hidden selection:bg-[#B5C161]/30">
       <Noise 
         patternSize={250}
         patternScaleX={1}
@@ -33,7 +33,7 @@ export default function ServicePage({ title, description, features, image }) {
             animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.8 }}
           >
-            <div className="text-purple-400 font-body text-sm tracking-widest uppercase mb-4">// Service Excellence</div>
+            <div className="text-[#B5C161] font-body text-sm tracking-widest uppercase mb-4">// Service Excellence</div>
             <h1 className="text-5xl md:text-7xl font-heading italic leading-[0.9] mb-8 tracking-tighter">
               {title}
             </h1>
@@ -48,7 +48,7 @@ export default function ServicePage({ title, description, features, image }) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + i * 0.1 }}
-                  className="liquid-glass p-6 rounded-3xl border border-white/5"
+                  className="liquid-glass p-6 rounded-3xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all"
                 >
                   <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
                   <p className="text-sm text-white/50 leading-relaxed">{feature.desc}</p>
@@ -64,7 +64,7 @@ export default function ServicePage({ title, description, features, image }) {
             transition={{ duration: 1, delay: 0.2 }}
             className="relative aspect-square rounded-[3rem] overflow-hidden group"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-transparent z-10 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#B5C161]/20 to-transparent z-10 opacity-60 group-hover:opacity-100 transition-opacity"></div>
             <img 
               src={image} 
               alt={title} 
@@ -76,8 +76,8 @@ export default function ServicePage({ title, description, features, image }) {
       </main>
 
       {/* Background elements */}
-      <div className="fixed -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[200px] pointer-events-none"></div>
-      <div className="fixed -top-1/4 -left-1/4 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px] pointer-events-none"></div>
+      <div className="fixed -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-[#B5C161]/10 rounded-full blur-[200px] pointer-events-none"></div>
+      <div className="fixed -top-1/4 -left-1/4 w-[600px] h-[600px] bg-white/5 rounded-full blur-[150px] pointer-events-none"></div>
     </div>
   );
 }
