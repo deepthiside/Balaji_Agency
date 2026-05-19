@@ -13,7 +13,7 @@ export const servicesData = [
   },
   {
     id: 'social-media-advertising',
-    title: 'Social Media Advertising',
+    title: 'Performance Marketing',
     description: 'Precision-targeted paid campaigns designed to maximize ROI and scale your business rapidly.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
     features: [

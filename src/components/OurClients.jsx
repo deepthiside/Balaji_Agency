@@ -7,7 +7,6 @@ import modern_baisalogo from '../assets/images/modern_baisa.png';
 import prakshat_group_logo from '../assets/images/prakash_hospital.jpeg';
 import KNlogo from '../assets/images/KN.jpeg';
 import goeasylogo from '../assets/images/goeasylogo.png';
-import SarveenLogo from '../assets/images/Sarveen Logo.png';
 
 const clientLogos = [
   { src: RishabhLogo, alt: "Rishabh Jwellers" },
@@ -16,9 +15,7 @@ const clientLogos = [
   { src: modern_baisalogo, alt: "Modern Baisa" },
   { src: prakshat_group_logo, alt: "Prakash Group" },
   { src: KNlogo, alt: "KN" },
-  { src: goeasylogo, alt: "GoEasy" },
-  { src: SarveenLogo, alt: "Sarveen" },
-
+  { src: goeasylogo, alt: "GoEasy" }
 ];
 
 export default function OurClients() {

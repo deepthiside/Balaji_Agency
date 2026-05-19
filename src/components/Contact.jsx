@@ -1,14 +1,18 @@
 import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import VariableProximity from './VariableProximity.jsx';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const contactHeaderRef = useRef(null);
   const [step, setStep] = useState(1);
+  const [isSending, setIsSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    contact_number: '',
     service: '',
     message: ''
   });
@@ -18,7 +22,36 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    nextStep(); // Move to success state
+    setIsSending(true);
+    setErrorMsg('');
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      contact_number: formData.contact_number,
+      title: formData.service || 'New Inquiry',
+      message: formData.message,
+    };
+
+    // Retrieve credentials from environment variables or use fallback placeholders
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_42mu89b';
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_00rrvxe';
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'UJbRCenXChB6FVvX5';
+
+    console.log('EmailJS Params debug:', { serviceId, templateId, publicKey, templateParams });
+
+    emailjs.send(serviceId, templateId, templateParams, {
+      publicKey: publicKey
+    })
+      .then(() => {
+        setIsSending(false);
+        nextStep(); // Move to success state
+      })
+      .catch((err) => {
+        console.error('EmailJS Error:', err);
+        setIsSending(false);
+        setErrorMsg('Failed to send message. Please try again or email us directly.');
+      });
   };
 
   return (
@@ -109,11 +142,19 @@ export default function Contact() {
                       value={formData.email}
                       onChange={e => setFormData({...formData, email: e.target.value})}
                     />
+                    <input 
+                      type="tel" 
+                      placeholder="Your Mobile Number" 
+                      required
+                      className="w-full bg-stone-50 border border-stone-200/80 rounded-2xl px-6 py-4 text-[#1C1917] placeholder-stone-400 font-body focus:outline-none focus:bg-white focus:border-[#A5C5E8] focus:ring-1 focus:ring-[#A5C5E8] transition-all"
+                      value={formData.contact_number}
+                      onChange={e => setFormData({...formData, contact_number: e.target.value})}
+                    />
                   </div>
                   <button 
                     type="button" 
                     onClick={nextStep}
-                    disabled={!formData.name || !formData.email}
+                    disabled={!formData.name || !formData.email || !formData.contact_number}
                     className="w-full bg-[#1C1917] text-white rounded-full py-4 font-bold hover:bg-[#A5C5E8] hover:text-[#1C1917] transition-all disabled:opacity-50"
                   >
                     Next Step
@@ -176,13 +217,27 @@ export default function Contact() {
                     value={formData.message}
                     onChange={e => setFormData({...formData, message: e.target.value})}
                   />
+                  {errorMsg && (
+                    <div className="flex items-center gap-2 text-red-600 text-sm font-body bg-red-50 p-3 rounded-xl border border-red-200">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>{errorMsg}</span>
+                    </div>
+                  )}
                   <div className="flex gap-4">
-                    <button type="button" onClick={prevStep} className="flex-1 border border-stone-200 rounded-full py-4 text-[#57534E] font-bold hover:bg-stone-50 transition-colors">Back</button>
+                    <button 
+                      type="button" 
+                      onClick={prevStep} 
+                      disabled={isSending}
+                      className="flex-1 border border-stone-200 rounded-full py-4 text-[#57534E] font-bold hover:bg-stone-50 transition-colors disabled:opacity-50"
+                    >
+                      Back
+                    </button>
                     <button 
                       type="submit"
-                      className="flex-[2] bg-[#1C1917] hover:bg-[#1C1917]/95 text-white rounded-full py-4 font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#1C1917]/10"
+                      disabled={isSending}
+                      className="flex-[2] bg-[#1C1917] hover:bg-[#1C1917]/95 text-white rounded-full py-4 font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#1C1917]/10 disabled:opacity-75"
                     >
-                      Send Message <Send className="w-4 h-4" />
+                      {isSending ? 'Sending...' : 'Send Message'} <Send className="w-4 h-4" />
                     </button>
                   </div>
                 </motion.div>

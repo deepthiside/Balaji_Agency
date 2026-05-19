@@ -17,13 +17,27 @@ import img12 from '../assets/images/WhatsApp Image 2026-05-16 at 10.03.21 PM.jpe
 import img13 from '../assets/images/WhatsApp Image 2026-05-16 at 7.28.11 AM (1).jpeg';
 import img14 from '../assets/images/WhatsApp Image 2026-05-16 at 7.28.11 AM.jpeg';
 
+// Import Office images
+import Office1 from '../assets/images/Office1.jpeg';
+import Office2 from '../assets/images/Office2.jpeg';
+import Office3 from '../assets/images/Office3.jpeg';
+import Office4 from '../assets/images/Office4.jpeg';
+import Office5 from '../assets/images/Office5.jpeg';
+import Office6 from '../assets/images/Office6.jpeg';
+
 const whatsappImages = [
   { src: img1, alt: 'Agency Work 1' },
+  { src: Office1, alt: 'Office Workspace 1' },
   { src: img2, alt: 'Agency Work 2' },
+  { src: Office2, alt: 'Office Workspace 2' },
   { src: img3, alt: 'Agency Work 3' },
+  { src: Office3, alt: 'Office Workspace 3' },
   { src: img4, alt: 'Agency Work 4' },
+  { src: Office4, alt: 'Office Workspace 4' },
   { src: img5, alt: 'Agency Work 5' },
+  { src: Office5, alt: 'Office Workspace 5' },
   { src: img6, alt: 'Agency Work 6' },
+  { src: Office6, alt: 'Office Workspace 6' },
   { src: img7, alt: 'Agency Work 7' },
   { src: img8, alt: 'Agency Work 8' },
   { src: img9, alt: 'Agency Work 9' },

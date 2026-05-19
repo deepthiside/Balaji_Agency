@@ -15,7 +15,7 @@ const services = [
     keywords: ["Social Media Strategy", "Instagram Marketing", "Facebook Marketing", "Digital Branding", "Content Creation", "Social Media Management", "Online Brand Growth"]
   },
   {
-    title: "Social Media Advertising",
+    title: "Performance Marketing",
     icon: <Zap className="w-8 h-8 text-[#59425A]" />,
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
     content: "Paid advertising on social media is one of the fastest ways to reach your target audience, drive immediate traffic, and generate high-quality leads.",
@@ -77,16 +77,16 @@ export default function ServicesPage() {
   return (
     <div className="services-page bg-[#FAFAF9] min-h-screen text-[#1C1917] font-body selection:bg-[#A5C5E8]/40 selection:text-[#1C1917] overflow-x-hidden relative">
       <TargetCursor />
-      
+
       {/* Floating Back Button */}
-      <Link 
-        to="/" 
+      <Link
+        to="/"
         className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50 hover:border-stone-300 text-stone-700 hover:text-[#59425A] backdrop-blur-md transition-all duration-300 group shadow-lg text-xs font-semibold tracking-wider uppercase"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         <span>Back to Home</span>
       </Link>
-      
+
       {/* Decorative Blur Background Glows */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#A5C5E8]/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
       <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[#E3DAC9]/15 rounded-full blur-[150px] pointer-events-none z-0"></div>
@@ -114,7 +114,7 @@ export default function ServicesPage() {
         {services.map((service, index) => {
           const isEven = index % 2 === 0;
           return (
-            <motion.section 
+            <motion.section
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -126,9 +126,9 @@ export default function ServicesPage() {
               <div className="w-full lg:w-1/2 group">
                 <div className="relative overflow-hidden rounded-[2.5rem] border border-stone-200 aspect-[4/3] w-full shadow-2xl bg-stone-100">
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent z-10 pointer-events-none"></div>
-                  <img 
-                    src={service.image} 
-                    alt={service.title} 
+                  <img
+                    src={service.image}
+                    alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     loading="lazy"
                   />
@@ -162,8 +162,8 @@ export default function ServicesPage() {
                   <h4 className="text-xs uppercase tracking-widest text-[#59425A] font-bold font-body">// Strategic Highlights</h4>
                   <div className="flex flex-wrap gap-2">
                     {service.keywords.map((keyword, kidx) => (
-                      <span 
-                        key={kidx} 
+                      <span
+                        key={kidx}
                         className="px-3 py-1.5 rounded-full bg-white border border-stone-200 text-stone-700 text-xs font-semibold hover:bg-[#A5C5E8]/10 hover:border-[#A5C5E8]/30 transition-all duration-300"
                       >
                         {keyword}
@@ -177,7 +177,7 @@ export default function ServicesPage() {
         })}
 
         {/* Why Choose Us Section */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -194,8 +194,8 @@ export default function ServicesPage() {
               "Completely customized solutions for distinct business goals",
               "Dedicated post-launch support and continuous innovations"
             ].map((item, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="flex items-start gap-4 p-5 rounded-3xl bg-white border border-stone-200 hover:border-stone-300 transition-colors shadow-lg"
               >
                 <div className="p-1 bg-[#A5C5E8]/20 rounded-lg text-[#59425A] mt-0.5">
