@@ -6,7 +6,7 @@ import founderImg from '../assets/images/founder.png';
 export default function Founder() {
   const sectionRef = useRef(null);
   return (
-    <section id="founder" ref={sectionRef} className="relative w-full py-20 px-6 md:px-16 lg:px-20 bg-[#B5C161] overflow-hidden border-t border-white/10">
+    <section id="founder" ref={sectionRef} className="relative w-full py-20 px-6 md:px-16 lg:px-20 bg-[#A5C5E8] overflow-hidden border-t border-[#1C1917]/10">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row-reverse gap-12 items-center">
         <div className="flex-1">
           <motion.div
@@ -89,7 +89,7 @@ export default function Founder() {
                 transition={{ delay: 0.5 }}
               >
                 <div className="text-white font-heading italic text-2xl tracking-tight mb-1">Jyoti Meena</div>
-                <div className="text-[#B5C161] font-body text-xs uppercase tracking-[0.2em] font-bold">Founder & CEO</div>
+                <div className="text-[#A5C5E8] font-body text-xs uppercase tracking-[0.2em] font-bold">Founder & CEO</div>
               </motion.div>
             </div>
           </div>

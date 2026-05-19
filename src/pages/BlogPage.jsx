@@ -34,12 +34,12 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div className="bg-[#59425A] min-h-screen text-white font-body selection:bg-[#B5C161]/30 overflow-hidden relative">
+    <div className="bg-[#FAFAF9] min-h-screen text-[#1C1917] font-body selection:bg-[#A5C5E8]/40 selection:text-[#1C1917] overflow-hidden relative">
       
       {/* Floating Back Button in top-left corner */}
       <Link 
         to="/" 
-        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50 hover:border-stone-300 text-stone-700 hover:text-[#8C2E20] backdrop-blur-md transition-all duration-300 group shadow-lg text-xs font-semibold font-body tracking-wider uppercase"
+        className="fixed top-6 left-6 z-[1050] inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50 hover:border-stone-300 text-stone-700 hover:text-[#59425A] backdrop-blur-md transition-all duration-300 group shadow-lg text-xs font-semibold font-body tracking-wider uppercase"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         <span>Back to Home</span>
@@ -52,11 +52,11 @@ export default function BlogPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-xs tracking-[0.3em] uppercase text-[#B5C161] font-bold mb-4 block">// Insights & Strategies</span>
-          <h1 className="font-heading italic text-6xl md:text-8xl lg:text-9xl mb-8 leading-none tracking-tighter text-white">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B5C161] via-[#F5F3EF] to-white">Journal</span>
+          <span className="text-xs tracking-[0.3em] uppercase text-[#59425A] font-bold mb-4 block">// Insights & Strategies</span>
+          <h1 className="font-heading italic text-6xl md:text-8xl lg:text-9xl mb-8 leading-none tracking-tighter text-[#1C1917]">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1C1917] via-[#59425A] to-[#1C1917]">Journal</span>
           </h1>
-          <p className="max-w-3xl text-[#F5F3EF]/90 text-lg md:text-2xl font-light leading-relaxed">
+          <p className="max-w-3xl text-[#1C1917]/90 text-lg md:text-2xl font-light leading-relaxed">
             Explore our latest blogs for cutting-edge digital marketing strategies, AI-driven insights, and expert advice to elevate your brand's growth.
           </p>
         </motion.div>
@@ -73,21 +73,21 @@ export default function BlogPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Link to={`/blog/${post.id}`} className="bg-white/10 rounded-3xl overflow-hidden border border-white/20 shadow-2xl shadow-black/25 hover:border-white/40 hover:bg-white/15 transition-all text-white flex flex-col h-full group">
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-white/5">
+              <Link to={`/blog/${post.id}`} className="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-2xl shadow-stone-200/50 hover:border-stone-300 hover:shadow-xl transition-all text-[#1C1917] flex flex-col h-full group">
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-stone-100">
                   <img 
                     src={post.image} 
                     alt={post.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     loading="lazy"
                   />
-                  <div className="absolute top-4 left-4 bg-[#B5C161] text-[#1C1917] px-3 py-1 rounded-full text-xs font-semibold border border-[#B5C161]">
+                  <div className="absolute top-4 left-4 bg-[#E3DAC9] text-[#1C1917] px-3 py-1 rounded-full text-xs font-semibold border border-stone-200/50">
                     {post.category}
                   </div>
                 </div>
                 
                 <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex items-center gap-4 text-xs text-[#F5F3EF]/55 font-bold mb-4">
+                  <div className="flex items-center gap-4 text-xs text-[#1C1917]/55 font-bold mb-4">
                     <div className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" />
                       <span>{post.date}</span>
@@ -102,15 +102,15 @@ export default function BlogPage() {
                     </div>
                   </div>
                   
-                  <h2 className="text-2xl md:text-3xl font-heading italic tracking-tight mb-4 text-white group-hover:text-[#B5C161] transition-colors">
+                  <h2 className="text-2xl md:text-3xl font-heading italic tracking-tight mb-4 text-[#1C1917] group-hover:text-[#59425A] transition-colors">
                     {post.title}
                   </h2>
                   
-                  <p className="text-[#F5F3EF]/80 font-light leading-relaxed mb-8 flex-grow text-sm md:text-base">
+                  <p className="text-[#1C1917]/80 font-light leading-relaxed mb-8 flex-grow text-sm md:text-base">
                     {post.excerpt}
                   </p>
                   
-                  <div className="mt-auto pt-6 border-t border-white/15 flex items-center justify-between text-[#B5C161] font-bold group-hover:text-[#B5C161]/80 transition-colors">
+                  <div className="mt-auto pt-6 border-t border-stone-200 flex items-center justify-between text-[#59425A] font-bold group-hover:text-[#59425A]/80 transition-colors">
                     <span>Continue Reading</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -128,7 +128,7 @@ export default function BlogPage() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-20 text-center"
         >
-          <button className="bg-white/10 px-8 py-3 rounded-full text-white hover:bg-[#B5C161] hover:text-[#1C1917] hover:border-[#B5C161] border border-white/20 shadow-md font-bold transition-all">
+          <button className="bg-white px-8 py-3 rounded-full text-[#1C1917] hover:bg-[#59425A] hover:text-white hover:border-[#59425A] border border-stone-200 shadow-md font-bold transition-all">
             Load More Articles
           </button>
         </motion.div>

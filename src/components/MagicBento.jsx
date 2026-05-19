@@ -30,7 +30,7 @@ const MagicBento = ({
   return (
     <section id="services" className="bento-section bg-[#E3DAC9] py-24 border-t border-[#1C1917]/10 relative overflow-hidden">
       {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#B5C161]/8 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#A5C5E8]/15 rounded-full blur-[120px] pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-6 mb-12 relative z-10">
         <div className="text-sm font-body text-[#1C1917]/70 mb-4 tracking-widest uppercase font-semibold">// Our Expertise</div>
@@ -38,7 +38,7 @@ const MagicBento = ({
           Our Services
         </h2>
       </div>
-
+ 
       <BentoCardGrid gridRef={gridRef}>
         {servicesData.map((card, index) => {
           const baseClassName = `magic-bento-card`;
@@ -55,11 +55,11 @@ const MagicBento = ({
                   zIndex: 0
                 }}
               />
-
+ 
               {/* Foreground Card with Gradient Border */}
               <Link
                 to={`/services/${card.id}`}
-                className={`${baseClassName} relative z-10 block w-full h-full rounded-[20px] overflow-hidden shadow-xl shadow-black/35 hover:shadow-2xl hover:shadow-[#B5C161]/10 transition-all duration-500`}
+                className={`${baseClassName} relative z-10 block w-full h-full rounded-[20px] overflow-hidden shadow-xl shadow-black/35 hover:shadow-2xl hover:shadow-[#A5C5E8]/10 transition-all duration-500`}
                 style={{
                   border: '3px solid transparent',
                   background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, ${gradient} border-box`,
@@ -73,7 +73,7 @@ const MagicBento = ({
                   const y = e.clientY - rect.top;
                   const centerX = rect.width / 2;
                   const centerY = rect.height / 2;
-
+ 
                   if (enableTilt) {
                     const rotateX = ((y - centerY) / centerY) * -8;
                     const rotateY = ((x - centerX) / centerX) * 8;
@@ -85,7 +85,7 @@ const MagicBento = ({
                       transformPerspective: 1000
                     });
                   }
-
+ 
                   if (enableMagnetism) {
                     const magnetX = (x - centerX) * 0.04;
                     const magnetY = (y - centerY) * 0.04;
@@ -110,15 +110,15 @@ const MagicBento = ({
                 }}
               >
                 {/* Background Image Layer */}
-                <div className="absolute inset-0 z-0 transition-transform duration-700 ease-out group-hover:scale-110">
+                <div className="absolute inset-0 z-0 transition-transform duration-700 ease-out group-hover:scale-105">
                   <img 
                     src={card.image} 
                     alt={card.title}
                     loading="lazy"
-                    className="w-full h-full object-cover opacity-[0.08] group-hover:opacity-[0.14] transition-opacity duration-500"
+                    className="w-full h-full object-cover opacity-65 group-hover:opacity-90 grayscale group-hover:grayscale-0 transition-all duration-700"
                   />
                   {/* Gradient Overlay for Readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/90 to-white/30 z-10"></div>
                 </div>
 
                 <div className="magic-bento-card__header relative z-10 flex justify-between items-start mb-12">

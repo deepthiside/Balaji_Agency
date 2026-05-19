@@ -202,11 +202,11 @@ export default function PortfolioPage() {
               <div className="portfolio-image-container">
                 <img src={project.image} alt={project.title} className="portfolio-image" />
                 <div className="portfolio-overlay"></div>
-                <div className="absolute top-4 left-4 bg-[#B5C161] text-[#1C1917] px-3 py-1 rounded-full text-xs font-semibold border border-[#B5C161] uppercase tracking-widest">
+                <div className="absolute top-4 left-4 bg-[#E3DAC9] text-[#1C1917] px-3 py-1 rounded-full text-xs font-semibold border border-stone-300 uppercase tracking-widest">
                   {project.category}
                 </div>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-sm font-body text-[#B5C161] font-bold tracking-widest uppercase mb-1">{project.client}</p>
+                  <p className="text-sm font-body text-[#A5C5E8] font-bold tracking-widest uppercase mb-1">{project.client}</p>
                   <h3 className="text-2xl font-heading italic text-white leading-tight">{project.title}</h3>
                 </div>
               </div>

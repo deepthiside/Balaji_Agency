@@ -23,7 +23,7 @@ const clientLogos = [
 
 export default function OurClients() {
   return (
-    <section id="clients" className="relative bg-[#B5C161] py-24 border-t border-white/10 overflow-hidden">
+    <section id="clients" className="relative bg-[#FAFAF9] py-24 border-t border-[#1C1917]/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center relative z-10">
         <div className="text-sm font-body text-[#1C1917]/85 font-semibold mb-4 tracking-widest uppercase">// Strategic Partners</div>
         <h2 className="font-heading italic text-[#1C1917] text-5xl md:text-6xl leading-none tracking-tight">
@@ -34,7 +34,7 @@ export default function OurClients() {
         </p>
       </div>
 
-      <div className="relative py-12 bg-white/80 border-y border-black/10 overflow-hidden">
+      <div className="relative py-12 bg-white border-y border-stone-200 overflow-hidden">
         <LogoLoop
           logos={clientLogos}
           speed={40}
@@ -44,7 +44,7 @@ export default function OurClients() {
           hoverSpeed={0}
           scaleOnHover
           fadeOut
-          fadeOutColor="#B5C161"
+          fadeOutColor="#FAFAF9"
           ariaLabel="Our clients"
         />
       </div>

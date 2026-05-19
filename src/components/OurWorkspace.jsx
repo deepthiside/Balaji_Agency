@@ -39,14 +39,14 @@ export default function OurWorkspace() {
   const distortion = isMobile ? 0.3 : 3.0; // Reduce distortion on mobile to keep planes perfectly flat/stable!
 
   return (
-    <section id="workspace" className="relative min-h-screen bg-[#59425A] py-24 px-6 md:px-16 lg:px-20 border-t border-white/10 overflow-hidden">
+    <section id="workspace" className="relative min-h-screen bg-[#E3DAC9] py-24 px-6 md:px-16 lg:px-20 border-t border-[#1C1917]/10 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <div className="text-sm font-body text-white/70 font-semibold mb-4 tracking-widest uppercase">// Our HQ</div>
-          <h2 className="font-heading italic text-white text-5xl md:text-7xl leading-none tracking-tight">
+          <div className="text-sm font-body text-[#1C1917]/70 font-semibold mb-4 tracking-widest uppercase">// Our HQ</div>
+          <h2 className="font-heading italic text-[#1C1917] text-5xl md:text-7xl leading-none tracking-tight">
             Our Workspace
           </h2>
-          <p className="text-[#F5F3EF]/90 font-body font-light max-w-2xl mt-6">
+          <p className="text-[#1C1917]/90 font-body font-light max-w-2xl mt-6">
             Located in the heart of Jaipur, our mission control center is where creativity meets technology.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function OurWorkspace() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-xl shadow-black/20 group"
+            className="relative rounded-[2rem] overflow-hidden border border-stone-300 shadow-xl shadow-black/25 group"
           >
             <iframe
               src={mapUrl}
@@ -80,7 +80,7 @@ export default function OurWorkspace() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-[2rem] overflow-hidden bg-[#291F2A] border border-white/10 shadow-xl shadow-black/20"
+            className="relative rounded-[2rem] overflow-hidden bg-[#FAFAF9] border border-stone-200 shadow-xl shadow-black/25"
           >
             <FlyingPosters
               items={workspaceImages}
@@ -101,7 +101,7 @@ export default function OurWorkspace() {
       </div>
 
       {/* Decorative background blur */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-white/5 rounded-full blur-[150px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-stone-300/15 rounded-full blur-[150px] pointer-events-none"></div>
     </section>
   );
 }

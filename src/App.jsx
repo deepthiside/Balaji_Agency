@@ -33,13 +33,10 @@ import PortfolioPage from './pages/PortfolioPage.jsx';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  const navType = useNavigationType();
   
   useEffect(() => {
-    if (navType !== 'POP') {
-      window.scrollTo(0, 0);
-    }
-  }, [pathname, navType]);
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 };
 

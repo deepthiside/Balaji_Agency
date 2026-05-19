@@ -7,32 +7,32 @@ import TargetCursor from '../components/TargetCursor';
 const reasons = [
   {
     title: "Expertise",
-    icon: <Target className="w-8 h-8 text-[#B5C161]" />,
+    icon: <Target className="w-8 h-8 text-[#59425A]" />,
     description: "Our team consists of experienced professionals who are well-versed in the latest trends and strategies of the digital marketing landscape. We bring a wealth of knowledge to ensure your campaigns are in capable hands."
   },
   {
     title: "Customized Approach",
-    icon: <Settings className="w-8 h-8 text-[#B5C161]" />,
+    icon: <Settings className="w-8 h-8 text-[#59425A]" />,
     description: "Every business is unique. We take a personalized approach to develop tailored strategies that align with your specific goals and target audiences for maximum impact."
   },
   {
     title: "Comprehensive Services",
-    icon: <Layers className="w-8 h-8 text-[#B5C161]" />,
+    icon: <Layers className="w-8 h-8 text-[#59425A]" />,
     description: "From Website Development to SEO, Social Media Marketing, and Paid Ads, we offer a full suite of services. Our integrated approach ensures a cohesive marketing strategy."
   },
   {
     title: "Proven Results",
-    icon: <BarChart className="w-8 h-8 text-[#B5C161]" />,
+    icon: <BarChart className="w-8 h-8 text-[#59425A]" />,
     description: "We have a track record of delivering successful outcomes. Through data-driven strategies and continuous optimization, we achieve measurable results that help your business thrive."
   },
   {
     title: "Transparency",
-    icon: <MessageSquare className="w-8 h-8 text-[#B5C161]" />,
+    icon: <MessageSquare className="w-8 h-8 text-[#59425A]" />,
     description: "We believe in strong partnerships based on open communication. We keep you informed about campaign progress, provide detailed reports, and are always available for you."
   },
   {
     title: "Client Satisfaction",
-    icon: <Heart className="w-8 h-8 text-[#B5C161]" />,
+    icon: <Heart className="w-8 h-8 text-[#59425A]" />,
     description: "Your success is our success. We go above and beyond to understand your business, exceed expectations, and establish long-term relationships."
   }
 ];
@@ -66,9 +66,9 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-xs tracking-[0.3em] uppercase text-[#B5C161] font-bold mb-4 block">// Who We Are</span>
+          <span className="text-xs tracking-[0.3em] uppercase text-[#59425A] font-bold mb-4 block">// Who We Are</span>
           <h1 className="font-heading italic text-6xl md:text-8xl lg:text-9xl mb-8 leading-none tracking-tighter text-[#1C1917]">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B5C161] via-[#1C1917] to-[#1C1917]">Us</span>
+            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#59425A] via-[#1C1917] to-[#1C1917]">Us</span>
           </h1>
           <p className="max-w-3xl text-[#1C1917]/90 text-lg md:text-2xl font-light leading-relaxed">
             Best Digital Marketing Agency with experienced digital experts and a proven track record of success. We are passionate about helping our clients achieve their goals.

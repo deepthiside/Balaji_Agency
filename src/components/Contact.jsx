@@ -53,15 +53,15 @@ export default function Contact() {
 
           <div className="mt-10 flex flex-col gap-4">
             <div className="bg-white border border-stone-200/80 shadow-md rounded-full px-5 py-4 flex items-center gap-4 w-full md:w-fit text-[#1C1917]">
-              <Mail className="w-5 h-5 text-[#B5C161]" />
+              <Mail className="w-5 h-5 text-[#59425A]" />
               <span className="text-[#1C1917] font-body text-sm font-medium">info@balajicreatives.com</span>
             </div>
             <div className="bg-white border border-stone-200/80 shadow-md rounded-full px-5 py-4 flex items-center gap-4 w-full md:w-fit text-[#1C1917]">
-              <Phone className="w-5 h-5 text-[#B5C161]" />
+              <Phone className="w-5 h-5 text-[#59425A]" />
               <span className="text-[#1C1917] font-body text-sm font-medium">+91 9672010821</span>
             </div>
             <div className="bg-white border border-stone-200/80 shadow-md rounded-full px-5 py-4 flex items-center gap-4 w-full md:w-fit text-[#1C1917]">
-              <MapPin className="w-5 h-5 text-[#B5C161]" />
+              <MapPin className="w-5 h-5 text-[#59425A]" />
               <span className="text-[#1C1917] font-body text-sm font-medium">Jaipur, Rajasthan</span>
             </div>
           </div>

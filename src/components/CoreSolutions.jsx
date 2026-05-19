@@ -31,8 +31,8 @@ const solutions = [
   {
     title: "Local Business Growth",
     description: "Highlighting the business profile, maps ranking, local listings, and review strategy.",
-    icon: <MapPin className="w-8 h-8 text-[#B5C161]" />,
-    color: "from-[#B5C161]/20 to-[#B5C161]/5"
+    icon: <MapPin className="w-8 h-8 text-[#59425A]" />,
+    color: "from-[#59425A]/15 to-[#59425A]/5"
   },
   {
     title: "Paid Marketing & Campaigns",

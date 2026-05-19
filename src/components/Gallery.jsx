@@ -36,12 +36,12 @@ const whatsappImages = [
 
 export default function Gallery() {
   return (
-    <section className="py-24 bg-[#400B11] relative overflow-hidden" id="gallery">
+    <section className="py-24 bg-[#FAFAF9] relative overflow-hidden border-t border-[#1C1917]/10" id="gallery">
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-        <h2 className="text-4xl md:text-6xl font-heading italic tracking-tighter mb-4 text-white">
-          Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B5C161] to-[#F5F3EF]">Creative Gallery</span>
+        <h2 className="text-4xl md:text-6xl font-heading italic tracking-tighter mb-4 text-[#1C1917]">
+          Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1C1917] to-[#A5C5E8]">Creative Gallery</span>
         </h2>
-        <p className="text-[#F5F3EF]/90 max-w-2xl mx-auto font-body font-light">
+        <p className="text-[#1C1917]/90 max-w-2xl mx-auto font-body font-light">
           A visual journey through our latest projects, campaigns, and creative milestones.
         </p>
       </div>
@@ -55,7 +55,7 @@ export default function Gallery() {
           segments={34}
           dragDampening={2}
           grayscale={false} // User might prefer color for their actual work
-          overlayBlurColor="#400B11"
+          overlayBlurColor="#FAFAF9"
         />
       </div>
     </section>
