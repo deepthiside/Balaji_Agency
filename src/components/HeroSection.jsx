@@ -1,5 +1,5 @@
 import React from 'react';
-import heroVideo from '../assets/images/video.mp4';
+import heroVideo from '../assets/images/video2.mp4';
 
 export default function HeroSection() {
   return (
