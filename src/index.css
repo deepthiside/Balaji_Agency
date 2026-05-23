@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600;700;800&display=swap');
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
@@ -252,7 +252,10 @@ body {
   }
 
   /* Global Headings Fix */
-  h1, h2, h3, .font-heading {
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Barlow', sans-serif !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
     letter-spacing: -0.02em;
   }
   

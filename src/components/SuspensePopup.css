@@ -95,10 +95,10 @@
 }
 
 .main-text {
-  font-family: 'Instrument Serif', serif;
+  font-family: 'Barlow', sans-serif;
   font-size: 3.5rem;
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 700;
+  font-style: normal;
   line-height: 1.1;
   margin-bottom: 12px;
   background: linear-gradient(135deg, #fff 0%, #a855f7 100%);

@@ -42,7 +42,7 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['"Instrument Serif"', 'serif'],
+        heading: ['"Barlow"', 'sans-serif'],
         body: ['"Barlow"', 'sans-serif'],
       },
       borderRadius: {
