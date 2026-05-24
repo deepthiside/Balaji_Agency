@@ -70,7 +70,7 @@ export default function ContactPopup({ isOpen, onClose }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-            className="relative w-full max-w-[500px] bg-white rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col z-10 border border-stone-200/80 font-body text-[#1C1917] max-h-[90vh] overflow-hidden"
+            className="relative w-full max-w-[420px] bg-white rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col z-10 border border-stone-200/80 font-body text-[#1C1917] max-h-[90vh] overflow-visible"
           >
             {/* Close Button overlapping Top Right */}
             <button

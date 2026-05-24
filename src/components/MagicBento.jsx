@@ -115,10 +115,10 @@ const MagicBento = ({
                     src={card.image} 
                     alt={card.title}
                     loading="lazy"
-                    className="w-full h-full object-cover opacity-65 group-hover:opacity-90 grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-95 transition-all duration-700"
                   />
-                  {/* Gradient Overlay for Readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/90 to-white/30 z-10"></div>
+                  {/* Gradient Overlay for Readability (light bottom gradient only to protect text contrast) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/45 to-transparent z-10"></div>
                 </div>
 
                 <div className="magic-bento-card__header relative z-10 flex justify-between items-start mb-12">

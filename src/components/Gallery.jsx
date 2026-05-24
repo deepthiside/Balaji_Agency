@@ -25,6 +25,14 @@ import Office4 from '../assets/images/Office4.jpeg';
 import Office5 from '../assets/images/Office5.jpeg';
 import Office6 from '../assets/images/Office6.jpeg';
 
+// Import new work images
+import work1 from '../assets/images/work1.jpeg';
+import work2 from '../assets/images/work2.jpeg';
+import work3 from '../assets/images/work3.jpeg';
+import work4 from '../assets/images/work4.jpeg';
+import work5 from '../assets/images/work5.jpeg';
+import work6 from '../assets/images/work6.jpeg';
+
 const whatsappImages = [
   { src: img1, alt: 'Agency Work 1' },
   { src: Office1, alt: 'Office Workspace 1' },
@@ -38,11 +46,17 @@ const whatsappImages = [
   { src: Office5, alt: 'Office Workspace 5' },
   { src: img6, alt: 'Agency Work 6' },
   { src: Office6, alt: 'Office Workspace 6' },
+  { src: work1, alt: 'Agency Work 15' },
   { src: img7, alt: 'Agency Work 7' },
+  { src: work2, alt: 'Agency Work 16' },
   { src: img8, alt: 'Agency Work 8' },
+  { src: work3, alt: 'Agency Work 17' },
   { src: img9, alt: 'Agency Work 9' },
+  { src: work4, alt: 'Agency Work 18' },
   { src: img10, alt: 'Agency Work 10' },
+  { src: work5, alt: 'Agency Work 19' },
   { src: img11, alt: 'Agency Work 11' },
+  { src: work6, alt: 'Agency Work 20' },
   { src: img12, alt: 'Agency Work 12' },
   { src: img13, alt: 'Agency Work 13' },
   { src: img14, alt: 'Agency Work 14' }
