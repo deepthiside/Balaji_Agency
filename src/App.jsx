@@ -16,6 +16,7 @@ import Gallery from './components/Gallery.jsx';
 import Reviews from './components/Reviews.jsx';
 import WhatsAppButton from './components/WhatsAppButton.jsx';
 import IntroLoader from './components/IntroLoader.jsx';
+import ContactPopup from './components/ContactPopup.jsx';
 
 // Service Pages
 import SocialMediaMarketing from './pages/services/SocialMediaMarketing.jsx';
@@ -105,6 +106,25 @@ const HomePage = () => {
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  useEffect(() => {
+    // Show contact popup with 2s delay after the IntroLoader finishes
+    if (!loading) {
+      const shown = sessionStorage.getItem('contactPopupShown');
+      if (!shown) {
+        const timer = setTimeout(() => {
+          setIsPopupOpen(true);
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [loading]);
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    sessionStorage.setItem('contactPopupShown', 'true');
+  };
 
   return (
     <>
@@ -112,6 +132,7 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <WhatsAppButton />
+        <ContactPopup isOpen={isPopupOpen} onClose={closePopup} />
         <div className="bg-[#FAFAF9] text-[#1C1917] min-h-screen flex flex-col transition-colors duration-500">
           <CardNav 
             logo={logo}
