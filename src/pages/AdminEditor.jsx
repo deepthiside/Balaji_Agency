@@ -67,6 +67,16 @@ export default function AdminEditor() {
     navigate('/admin/dashboard');
   };
 
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link', 'image', 'video'],
+      ['clean']
+    ],
+  };
+
   return (
     <div className="bg-[#FAFAF9] min-h-screen text-[#1C1917] font-body relative pb-20">
       <header className="bg-white border-b border-stone-200 sticky top-0 z-50">
@@ -137,7 +147,7 @@ export default function AdminEditor() {
               <div className="flex flex-col gap-4">
                 <input 
                   name="image"
-                  value={formData.image.startsWith('data:') ? '' : formData.image}
+                  value={formData.image && formData.image.startsWith('data:') ? '' : (formData.image || '')}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#59425A] focus:ring-1 focus:ring-[#59425A] transition-all bg-stone-50"
                   placeholder="Paste an image URL..."
@@ -183,6 +193,7 @@ export default function AdminEditor() {
                   theme="snow" 
                   value={formData.content} 
                   onChange={handleContentChange} 
+                  modules={modules}
                   className="h-64 mb-12"
                 />
               </div>
