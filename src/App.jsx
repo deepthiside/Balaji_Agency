@@ -107,6 +107,56 @@ const HomePage = () => {
   );
 };
 
+const AppContent = ({ isPopupOpen, closePopup }) => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
+  return (
+    <>
+      <ScrollToTop />
+      {!isAdminRoute && <WhatsAppButton />}
+      {!isAdminRoute && <ContactPopup isOpen={isPopupOpen} onClose={closePopup} />}
+      <div className="bg-[#FAFAF9] text-[#1C1917] min-h-screen flex flex-col transition-colors duration-500">
+        {!isAdminRoute && (
+          <CardNav 
+            logo={logo}
+            logoAlt="Balaji Creatives Logo"
+            items={navItems}
+            baseColor="#FAFAF9"
+            menuColor="#1C1917"
+            buttonBgColor="#400B11"
+            buttonTextColor="#FAFAF9"
+            ease="power3.out"
+          />
+        )}
+        
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about-us" element={<AboutPage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/new" element={<AdminEditor />} />
+            <Route path="/admin/edit/:id" element={<AdminEditor />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
+            <Route path="/services/social-media-advertising" element={<SocialMediaAdvertising />} />
+            <Route path="/services/web-development" element={<WebDevelopment />} />
+            <Route path="/services/automation" element={<Automation />} />
+            <Route path="/services/ai-content-influencers" element={<AIContent />} />
+            <Route path="/services/digital-invitations" element={<DigitalInvitations />} />
+          </Routes>
+        </div>
+        
+        {!isAdminRoute && <Footer />}
+      </div>
+    </>
+  );
+};
+
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -133,44 +183,7 @@ export default function App() {
     <>
       {loading && <IntroLoader onComplete={() => setLoading(false)} />}
       <Router>
-        <ScrollToTop />
-        <WhatsAppButton />
-        <ContactPopup isOpen={isPopupOpen} onClose={closePopup} />
-        <div className="bg-[#FAFAF9] text-[#1C1917] min-h-screen flex flex-col transition-colors duration-500">
-          <CardNav 
-            logo={logo}
-            logoAlt="Balaji Creatives Logo"
-            items={navItems}
-            baseColor="#FAFAF9"
-            menuColor="#1C1917"
-            buttonBgColor="#400B11"
-            buttonTextColor="#FAFAF9"
-            ease="power3.out"
-          />
-          
-          <div className="flex-grow">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about-us" element={<AboutPage />} />
-              <Route path="/portfolio" element={<PortfolioPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:id" element={<BlogPost />} />
-              <Route path="/admin" element={<AdminLogin />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-              <Route path="/admin/new" element={<AdminEditor />} />
-              <Route path="/admin/edit/:id" element={<AdminEditor />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
-              <Route path="/services/social-media-advertising" element={<SocialMediaAdvertising />} />
-              <Route path="/services/web-development" element={<WebDevelopment />} />
-              <Route path="/services/automation" element={<Automation />} />
-              <Route path="/services/ai-content-influencers" element={<AIContent />} />
-              <Route path="/services/digital-invitations" element={<DigitalInvitations />} />
-            </Routes>
-          </div>
-          
-          <Footer />
-        </div>
+        <AppContent isPopupOpen={isPopupOpen} closePopup={closePopup} />
       </Router>
     </>
   );
