@@ -30,6 +30,9 @@ import AboutPage from './pages/AboutPage.jsx';
 import BlogPage from './pages/BlogPage.jsx';
 import BlogPost from './pages/BlogPost.jsx';
 import PortfolioPage from './pages/PortfolioPage.jsx';
+import AdminLogin from './pages/AdminLogin.jsx';
+import AdminDashboard from './pages/AdminDashboard.jsx';
+import AdminEditor from './pages/AdminEditor.jsx';
 
 
 const ScrollToTop = () => {
@@ -152,6 +155,10 @@ export default function App() {
               <Route path="/portfolio" element={<PortfolioPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:id" element={<BlogPost />} />
+              <Route path="/admin" element={<AdminLogin />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/new" element={<AdminEditor />} />
+              <Route path="/admin/edit/:id" element={<AdminEditor />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
               <Route path="/services/social-media-advertising" element={<SocialMediaAdvertising />} />

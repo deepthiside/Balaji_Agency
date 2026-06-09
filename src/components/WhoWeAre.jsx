@@ -70,7 +70,7 @@ export default function WhoWeAre() {
           <div className="bg-white border border-stone-200 shadow-xl shadow-stone-200/50 rounded-[2rem] p-2 aspect-[4/3] w-full">
             <div className="w-full h-full rounded-[1.8rem] bg-transparent overflow-hidden relative">
               <TiltedCard
-                imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2850&auto=format&fit=crop"
+                imageSrc="./src/assets/images/work1.jpeg"
                 altText="Balaji Creatives Team"
                 captionText="Balaji Creatives"
                 containerHeight="100%"

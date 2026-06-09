@@ -1,31 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Calendar, MessageSquare, Clock } from 'lucide-react';
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "Google Ads vs Meta Ads in 2026: Which Platform Delivers Better Results?",
-    excerpt: "One Story that Every Business People Should be able to associate with. Meet Riya and Her Startup Journey. Riya was a dreamer-she wanted to start her own skincare business. She...",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2940&auto=format&fit=crop",
-    date: "April 22, 2026",
-    readTime: "5 min read",
-    category: "Digital Advertising"
-  },
-  {
-    id: 2,
-    title: "Why Website Structure Matters for Google Rankings in 2026",
-    excerpt: "A Simple Story to Understand Website Structure. The Two Shops Analogy: Suppose you enter two stores. The former is sloppy - there are items scattered around, there are no tags...",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
-    date: "April 22, 2026",
-    readTime: "4 min read",
-    category: "Search Engine Optimization"
-  }
-];
+import { getBlogs } from '../lib/blogStore';
 
 export default function BlogPage() {
+  const [blogPosts, setBlogPosts] = useState([]);
+
   useEffect(() => {
+    setBlogPosts(getBlogs());
     document.title = "Top Blogs & Insights | Balaji Creatives";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -92,10 +75,7 @@ export default function BlogPage() {
                       <Calendar className="w-3.5 h-3.5" />
                       <span>{post.date}</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5" />
-                      <span>{post.readTime}</span>
-                    </div>
+
                     <div className="flex items-center gap-1.5 ml-auto">
                       <MessageSquare className="w-3.5 h-3.5" />
                       <span>0 Comments</span>
