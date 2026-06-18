@@ -9,7 +9,7 @@ const services = [
   {
     title: "Social Media Marketing",
     icon: <Megaphone className="w-8 h-8 text-[#59425A]" />,
-    image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop",
     content: "In today’s digital world, social media is more than just posting content — it’s about building a strong online presence, engaging your audience, and turning followers into loyal customers.",
     details: "At Balaji Creatives, our Social Media Marketing services help brands grow through creative strategies, consistent branding, and audience-focused content. We manage and grow your brand on Instagram, Facebook, LinkedIn, and YouTube, focusing on audience targeting, trend analysis, and performance tracking.",
     keywords: ["Social Media Strategy", "Instagram Marketing", "Facebook Marketing", "Digital Branding", "Content Creation", "Social Media Management", "Online Brand Growth"]
@@ -17,7 +17,7 @@ const services = [
   {
     title: "Performance Marketing",
     icon: <Zap className="w-8 h-8 text-[#59425A]" />,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=800&auto=format&fit=crop",
     content: "Paid advertising on social media is one of the fastest ways to reach your target audience, drive immediate traffic, and generate high-quality leads.",
     details: "We design, write, and manage high-converting ad campaigns across Facebook Ads, Instagram Ads, Google Ads, and LinkedIn Ads. From target audience research and persuasive ad creatives to conversion optimization and continuous analytics, we maximize your ROI.",
     keywords: ["Social Media Advertising", "Facebook Ads", "Instagram Ads", "PPC Campaigns", "Google Ads", "Lead Generation", "ROI Optimization"]
@@ -25,7 +25,7 @@ const services = [
   {
     title: "Website Development",
     icon: <Globe className="w-8 h-8 text-[#59425A]" />,
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop",
     content: "Your website is the digital face of your brand. We design and build responsive, fast, and SEO-friendly sites that convert visitors into buyers.",
     details: "Whether you need a sleek landing page, a professional corporate portfolio, a dynamic startup platform, or a robust eCommerce store, we build custom solutions tailored to your unique objectives. Our designs ensure smooth UX and fast loading speeds.",
     keywords: ["Web Development", "UI/UX Design", "eCommerce Store", "Responsive Design", "SEO Optimized", "Custom Web Apps", "Page Speed Optimization"]
@@ -33,7 +33,7 @@ const services = [
   {
     title: "Photography & Videography",
     icon: <Camera className="w-8 h-8 text-[#59425A]" />,
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1533158326339-7f3cf2404354?q=80&w=800&auto=format&fit=crop",
     content: "Premium visuals separate elite businesses from generic ones. We capture, produce, and edit high-quality content that narrates your brand story.",
     details: "Our expert team handles professional product shoots, fashion photoshoots, corporate events, and engaging short-form video content (Reels/TikToks) designed to stand out on social media feeds and websites, evoking customer trust.",
     keywords: ["Brand Photography", "Product Shoots", "Commercial Photography", "Reels Production", "Event Coverage", "Visual Storytelling", "High-End Video Editing"]
@@ -41,7 +41,7 @@ const services = [
   {
     title: "AI Content & Influencers",
     icon: <Sparkles className="w-8 h-8 text-[#59425A]" />,
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=800&auto=format&fit=crop",
     content: "Embrace the future of automated brand presence. We merge advanced artificial intelligence with real creator influence for maximum reach.",
     details: "We streamline your pipeline with AI-assisted copywriting, personalized customer campaigns, and optimized content schedules. Combined with our influencer matchmaking services, we connect your brand with creators to build authentic consumer trust.",
     keywords: ["AI Content Creation", "Influencer Marketing", "AI Copywriting", "Creator Collaborations", "Automated Schedules", "Brand Matchmaking", "Digital Innovation"]
@@ -49,7 +49,7 @@ const services = [
   {
     title: "Digital Invitations",
     icon: <Heart className="w-8 h-8 text-[#59425A]" />,
-    image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop",
     content: "Ditch static paper templates. We craft elegant, modern, and interactive digital invitations that leave a memorable mark.",
     details: "From stunning animated wedding e-invites to interactive corporate invites and dynamic event brochures, we build responsive pages and high-end video invitations easily shareable via WhatsApp, email, or social media.",
     keywords: ["Digital Invitations", "Wedding E-Invites", "Animated Video Invites", "Interactive Event Cards", "WhatsApp Invitations", "Custom Invitation Design", "Elegant E-Brochures"]
@@ -57,7 +57,7 @@ const services = [
   {
     title: "Business Automations",
     icon: <Settings className="w-8 h-8 text-[#59425A]" />,
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     content: "Scale your business without scaling manual work. We implement smart automation pipelines that work for you 24/7.",
     details: "We build customized WhatsApp automations, smart AI chatbots, automated lead capture pipelines, email drip sequences, and cross-platform CRM integrations to eliminate repetitive tasks, saving your team valuable hours every week.",
     keywords: ["Business Automation", "WhatsApp Chatbots", "Lead Generation Funnels", "CRM Integrations", "Email Campaigns", "Workflow Optimization", "AI Customer Support"]

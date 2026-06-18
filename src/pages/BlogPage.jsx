@@ -6,21 +6,9 @@ import { getBlogs } from '../lib/blogStore';
 
 export default function BlogPage() {
   const [blogPosts, setBlogPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const data = await getBlogs();
-        setBlogPosts(data);
-      } catch (e) {
-        console.error("Error loading blogs:", e);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchBlogs();
-    
+    setBlogPosts(getBlogs());
     document.title = "Top Blogs & Insights | Balaji Creatives";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -59,12 +47,7 @@ export default function BlogPage() {
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-6 pb-32 relative z-10">
-        {loading ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <div className="w-12 h-12 border-4 border-[#59425A] border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p className="text-stone-500 font-semibold font-body">Loading insights...</p>
-          </div>
-        ) : blogPosts.length === 0 ? (
+        {blogPosts.length === 0 ? (
           <div className="text-center py-20 bg-white border border-stone-200 rounded-[2rem] shadow-sm max-w-xl mx-auto">
             <p className="text-xl text-stone-500 mb-2 font-heading italic">No blogs found.</p>
             <p className="text-sm text-stone-400 font-body">Check back later for new articles!</p>

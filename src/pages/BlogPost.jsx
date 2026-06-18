@@ -8,36 +8,16 @@ export default function BlogPost() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const fetchedPost = await getBlogById(id);
-        if (fetchedPost) {
-          setPost(fetchedPost);
-          document.title = `${fetchedPost.title} | Balaji Creatives`;
-        } else {
-          navigate('/blog');
-        }
-      } catch (e) {
-        console.error("Error loading blog post:", e);
-        navigate('/blog');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPost();
+    const fetchedPost = getBlogById(id);
+    if (fetchedPost) {
+      setPost(fetchedPost);
+      document.title = `${fetchedPost.title} | Balaji Creatives`;
+    } else {
+      navigate('/blog');
+    }
   }, [id, navigate]);
-
-  if (loading) {
-    return (
-      <div className="bg-[#FAFAF9] min-h-screen flex flex-col items-center justify-center font-body text-[#1C1917]">
-        <div className="w-12 h-12 border-4 border-[#59425A] border-t-transparent rounded-full animate-spin mb-4"></div>
-        <p className="text-stone-500 font-semibold">Loading article...</p>
-      </div>
-    );
-  }
 
   if (!post) return null;
 

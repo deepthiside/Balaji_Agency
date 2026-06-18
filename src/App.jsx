@@ -30,9 +30,6 @@ import AboutPage from './pages/AboutPage.jsx';
 import BlogPage from './pages/BlogPage.jsx';
 import BlogPost from './pages/BlogPost.jsx';
 import PortfolioPage from './pages/PortfolioPage.jsx';
-import AdminLogin from './pages/AdminLogin.jsx';
-import AdminDashboard from './pages/AdminDashboard.jsx';
-import AdminEditor from './pages/AdminEditor.jsx';
 
 
 const ScrollToTop = () => {
@@ -108,27 +105,22 @@ const HomePage = () => {
 };
 
 const AppContent = ({ isPopupOpen, closePopup }) => {
-  const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
-
   return (
     <>
       <ScrollToTop />
-      {!isAdminRoute && <WhatsAppButton />}
-      {!isAdminRoute && <ContactPopup isOpen={isPopupOpen} onClose={closePopup} />}
+      <WhatsAppButton />
+      <ContactPopup isOpen={isPopupOpen} onClose={closePopup} />
       <div className="bg-[#FAFAF9] text-[#1C1917] min-h-screen flex flex-col transition-colors duration-500">
-        {!isAdminRoute && (
-          <CardNav 
-            logo={logo}
-            logoAlt="Balaji Creatives Logo"
-            items={navItems}
-            baseColor="#FAFAF9"
-            menuColor="#1C1917"
-            buttonBgColor="#400B11"
-            buttonTextColor="#FAFAF9"
-            ease="power3.out"
-          />
-        )}
+        <CardNav 
+          logo={logo}
+          logoAlt="Balaji Creatives Logo"
+          items={navItems}
+          baseColor="#FAFAF9"
+          menuColor="#1C1917"
+          buttonBgColor="#400B11"
+          buttonTextColor="#FAFAF9"
+          ease="power3.out"
+        />
         
         <div className="flex-grow">
           <Routes>
@@ -137,10 +129,6 @@ const AppContent = ({ isPopupOpen, closePopup }) => {
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="/admin" element={<AdminLogin />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/new" element={<AdminEditor />} />
-            <Route path="/admin/edit/:id" element={<AdminEditor />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
             <Route path="/services/social-media-advertising" element={<SocialMediaAdvertising />} />
@@ -151,7 +139,7 @@ const AppContent = ({ isPopupOpen, closePopup }) => {
           </Routes>
         </div>
         
-        {!isAdminRoute && <Footer />}
+        <Footer />
       </div>
     </>
   );
