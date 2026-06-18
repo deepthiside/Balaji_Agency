@@ -1,21 +1,21 @@
 import React from 'react';
 import LogoLoop from './LogoLoop';
-import RishabhLogo from '../assets/images/rishabhjwellers.png';
-import BWlogo from '../assets/images/BW.jpeg';
-import JBlogo from '../assets/images/jb-jewellers.png';
-import modern_baisalogo from '../assets/images/modern_baisa.png';
-import prakshat_group_logo from '../assets/images/prakash_hospital.jpeg';
-import KNlogo from '../assets/images/KN.jpeg';
-import goeasylogo from '../assets/images/goeasylogo.png';
+import client1 from '../assets/images/client1.png';
+import client2 from '../assets/images/client2.png';
+import client3 from '../assets/images/client3.png';
+import client4 from '../assets/images/client4.png';
+import client5 from '../assets/images/client5.png';
+import client6 from '../assets/images/client6.png';
+import client7 from '../assets/images/client7.png';
 
 const clientLogos = [
-  { src: RishabhLogo, alt: "Rishabh Jwellers" },
-  { src: BWlogo, alt: "BW" },
-  { src: JBlogo, alt: "JB" },
-  { src: modern_baisalogo, alt: "Modern Baisa" },
-  { src: prakshat_group_logo, alt: "Prakash Group" },
-  { src: KNlogo, alt: "KN" },
-  { src: goeasylogo, alt: "GoEasy" }
+  { src: client1, alt: "Client 1" },
+  { src: client2, alt: "Client 2" },
+  { src: client3, alt: "Client 3" },
+  { src: client4, alt: "Client 4" },
+  { src: client5, alt: "Client 5" },
+  { src: client6, alt: "Client 6" },
+  { src: client7, alt: "Client 7" }
 ];
 
 export default function OurClients() {
@@ -31,17 +31,17 @@ export default function OurClients() {
         </p>
       </div>
 
-      <div className="relative py-12 bg-white border-y border-stone-200 overflow-hidden">
+      <div className="relative py-4 bg-white border-y border-stone-200/50 overflow-hidden">
         <LogoLoop
           logos={clientLogos}
           speed={40}
           direction="left"
-          logoHeight={90}
-          gap={120}
+          logoHeight={220}
+          gap={-45}
           hoverSpeed={0}
           scaleOnHover
           fadeOut
-          fadeOutColor="#FAFAF9"
+          fadeOutColor="#ffffff"
           ariaLabel="Our clients"
         />
       </div>
