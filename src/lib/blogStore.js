@@ -62,56 +62,152 @@ export const initialBlogs = [
   }
 ];
 
-export const getBlogs = () => {
-  const stored = localStorage.getItem('balaji_blogs');
-  if (stored) {
-    try {
-      return JSON.parse(stored);
-    } catch (e) {
-      console.error("Error parsing blogs from local storage", e);
-      return initialBlogs;
+const DB_URL = import.meta.env.VITE_FIREBASE_DB_URL;
+
+// Helper to get sanitised database URL for blogs
+const getDbUrl = () => {
+  if (!DB_URL) return null;
+  const base = DB_URL.endsWith('/') ? DB_URL.slice(0, -1) : DB_URL;
+  return `${base}/blogs.json`;
+};
+
+export const getBlogs = async () => {
+  const url = getDbUrl();
+  if (!url) {
+    console.warn("VITE_FIREBASE_DB_URL is not set. Using localStorage fallback.");
+    const stored = localStorage.getItem('balaji_blogs');
+    if (stored) {
+      try {
+        return JSON.parse(stored);
+      } catch (e) {
+        return initialBlogs;
+      }
     }
+    localStorage.setItem('balaji_blogs', JSON.stringify(initialBlogs));
+    return initialBlogs;
   }
-  // Initialize if not present
-  localStorage.setItem('balaji_blogs', JSON.stringify(initialBlogs));
-  return initialBlogs;
-};
 
-export const getBlogById = (id) => {
-  const blogs = getBlogs();
-  return blogs.find(b => b.id === String(id));
-};
-
-export const saveBlog = (blogData) => {
-  const blogs = getBlogs();
-  const existingIndex = blogs.findIndex(b => b.id === String(blogData.id));
-  
-  if (existingIndex >= 0) {
-    blogs[existingIndex] = { ...blogs[existingIndex], ...blogData };
-  } else {
-    // new blog
-    blogs.push({
-      ...blogData,
-      id: blogData.id || String(Date.now())
-    });
-  }
-  
   try {
-    localStorage.setItem('balaji_blogs', JSON.stringify(blogs));
-  } catch (e) {
-    if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
-      alert("Error: Storage limit exceeded! The image file you uploaded is too large. Please use a smaller image file or copy-paste an image web URL instead.");
-    } else {
-      alert("Error saving blog post: " + e.message);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to fetch blogs from database");
+    const data = await res.json();
+    if (!data) return [];
+    
+    // Firebase returns object-of-objects or array. Convert to array.
+    if (Array.isArray(data)) {
+      return data.filter(Boolean);
     }
+    
+    return Object.keys(data).map(key => ({
+      ...data[key],
+      id: key
+    }));
+  } catch (e) {
+    console.error("Error fetching blogs from Firebase:", e);
+    // Fallback to localStorage offline
+    const stored = localStorage.getItem('balaji_blogs');
+    return stored ? JSON.parse(stored) : initialBlogs;
+  }
+};
+
+export const getBlogById = async (id) => {
+  const url = getDbUrl();
+  if (!url) {
+    const stored = localStorage.getItem('balaji_blogs');
+    const blogs = stored ? JSON.parse(stored) : initialBlogs;
+    return blogs.find(b => b.id === String(id)) || null;
+  }
+
+  try {
+    const base = DB_URL.endsWith('/') ? DB_URL.slice(0, -1) : DB_URL;
+    const res = await fetch(`${base}/blogs/${id}.json`);
+    if (!res.ok) throw new Error("Failed to fetch blog post");
+    const data = await res.json();
+    if (data) {
+      return { ...data, id: String(id) };
+    }
+    return null;
+  } catch (e) {
+    console.error(`Error fetching blog ${id}:`, e);
+    const stored = localStorage.getItem('balaji_blogs');
+    const blogs = stored ? JSON.parse(stored) : initialBlogs;
+    return blogs.find(b => b.id === String(id)) || null;
+  }
+};
+
+export const saveBlog = async (blogData) => {
+  const url = getDbUrl();
+  if (!url) {
+    const stored = localStorage.getItem('balaji_blogs');
+    let blogs = stored ? JSON.parse(stored) : [...initialBlogs];
+    const existingIndex = blogs.findIndex(b => b.id === String(blogData.id));
+    
+    if (existingIndex >= 0) {
+      blogs[existingIndex] = { ...blogs[existingIndex], ...blogData };
+    } else {
+      blogs.push({
+        ...blogData,
+        id: blogData.id || String(Date.now())
+      });
+    }
+    
+    try {
+      localStorage.setItem('balaji_blogs', JSON.stringify(blogs));
+    } catch (e) {
+      if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+        alert("Error: Storage limit exceeded! Image file is too large. Use a smaller file or image URL.");
+      } else {
+        alert("Error saving blog: " + e.message);
+      }
+      throw e;
+    }
+    return blogs;
+  }
+
+  const id = blogData.id || String(Date.now());
+  const base = DB_URL.endsWith('/') ? DB_URL.slice(0, -1) : DB_URL;
+  const postData = {
+    ...blogData,
+    id: id
+  };
+
+  try {
+    const res = await fetch(`${base}/blogs/${id}.json`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    });
+    if (!res.ok) throw new Error("Failed to save blog to Firebase");
+    return getBlogs();
+  } catch (e) {
+    console.error("Error saving blog to Firebase:", e);
+    alert("Error saving blog to database: " + e.message);
     throw e;
   }
-  return blogs;
 };
 
-export const deleteBlog = (id) => {
-  const blogs = getBlogs();
-  const updatedBlogs = blogs.filter(b => b.id !== String(id));
-  localStorage.setItem('balaji_blogs', JSON.stringify(updatedBlogs));
-  return updatedBlogs;
+export const deleteBlog = async (id) => {
+  const url = getDbUrl();
+  if (!url) {
+    const stored = localStorage.getItem('balaji_blogs');
+    let blogs = stored ? JSON.parse(stored) : [...initialBlogs];
+    const updated = blogs.filter(b => b.id !== String(id));
+    localStorage.setItem('balaji_blogs', JSON.stringify(updated));
+    return updated;
+  }
+
+  try {
+    const base = DB_URL.endsWith('/') ? DB_URL.slice(0, -1) : DB_URL;
+    const res = await fetch(`${base}/blogs/${id}.json`, {
+      method: 'DELETE'
+    });
+    if (!res.ok) throw new Error("Failed to delete blog from Firebase");
+    return getBlogs();
+  } catch (e) {
+    console.error("Error deleting blog from Firebase:", e);
+    alert("Error deleting blog from database: " + e.message);
+    throw e;
+  }
 };

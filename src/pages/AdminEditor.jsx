@@ -10,8 +10,9 @@ export default function AdminEditor() {
   const { id } = useParams();
   const navigate = useNavigate();
   const isNew = !id;
-
   const [isAuth, setIsAuth] = useState(() => sessionStorage.getItem('isAdminLoggedIn') === 'true');
+  const [loading, setLoading] = useState(!isNew);
+  const [saving, setSaving] = useState(false);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -29,12 +30,22 @@ export default function AdminEditor() {
     }
 
     if (!isNew) {
-      const blog = getBlogById(id);
-      if (blog) {
-        setFormData(blog);
-      } else {
-        navigate('/admin/dashboard');
-      }
+      const fetchBlog = async () => {
+        try {
+          const blog = await getBlogById(id);
+          if (blog) {
+            setFormData(blog);
+          } else {
+            navigate('/admin/dashboard');
+          }
+        } catch (e) {
+          console.error("Error loading blog for edit:", e);
+          navigate('/admin/dashboard');
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchBlog();
     }
   }, [id, isNew, isAuth, navigate]);
 
@@ -60,14 +71,20 @@ export default function AdminEditor() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSaving(true);
     const toSave = { ...formData };
     if (!isNew) {
       toSave.id = id;
     }
-    saveBlog(toSave);
-    navigate('/admin/dashboard');
+    try {
+      await saveBlog(toSave);
+      navigate('/admin/dashboard');
+    } catch (e) {
+      console.error("Error saving blog:", e);
+      setSaving(false);
+    }
   };
 
   const modules = {
@@ -98,16 +115,27 @@ export default function AdminEditor() {
           <button 
             type="submit"
             form="blog-form"
-            className="flex items-center gap-2 bg-[#59425A] hover:bg-[#400B11] text-white px-6 py-2.5 rounded-lg font-bold transition-all shadow-md"
+            disabled={saving}
+            className="flex items-center gap-2 bg-[#59425A] hover:bg-[#400B11] text-white px-6 py-2.5 rounded-lg font-bold transition-all shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Save className="w-4 h-4" />
-            Save Post
+            {saving ? (
+              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            ) : (
+              <Save className="w-4 h-4" />
+            )}
+            <span>{saving ? 'Saving...' : 'Save Post'}</span>
           </button>
         </div>
       </header>
 
       <main className="max-w-4xl mx-auto px-6 py-8">
-        <form id="blog-form" onSubmit={handleSubmit} className="space-y-6">
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-20 bg-white border border-stone-200 rounded-[2rem] shadow-sm">
+            <div className="w-12 h-12 border-4 border-[#59425A] border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p className="text-stone-500 font-semibold font-body">Loading post data...</p>
+          </div>
+        ) : (
+          <form id="blog-form" onSubmit={handleSubmit} className="space-y-6">
           <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6">
             <div>
               <label className="block text-sm font-semibold mb-2">Post Title</label>
@@ -203,7 +231,8 @@ export default function AdminEditor() {
               </div>
             </div>
           </div>
-        </form>
+          </form>
+        )}
       </main>
     </div>
   );

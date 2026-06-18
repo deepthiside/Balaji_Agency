@@ -6,23 +6,41 @@ import { motion } from 'framer-motion';
 
 export default function AdminDashboard() {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(() => sessionStorage.getItem('isAdminLoggedIn') === 'true');
 
   useEffect(() => {
-    if (!isAuth) {
-      navigate('/admin');
-    } else {
-      setBlogs(getBlogs());
-    }
+    const fetchBlogs = async () => {
+      if (!isAuth) {
+        navigate('/admin');
+        return;
+      }
+      try {
+        const data = await getBlogs();
+        setBlogs(data);
+      } catch (e) {
+        console.error("Error fetching blogs for dashboard:", e);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
   }, [isAuth, navigate]);
 
   if (!isAuth) return null;
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this blog post?')) {
-      const updated = deleteBlog(id);
-      setBlogs(updated);
+      setLoading(true);
+      try {
+        const updated = await deleteBlog(id);
+        setBlogs(updated);
+      } catch (e) {
+        console.error("Error deleting blog post:", e);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -66,9 +84,14 @@ export default function AdminDashboard() {
           </Link>
         </div>
 
-        {blogs.length === 0 ? (
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="w-12 h-12 border-4 border-[#59425A] border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p className="text-stone-500 font-semibold font-body">Updating dashboard...</p>
+          </div>
+        ) : blogs.length === 0 ? (
           <div className="text-center py-20 bg-white border border-stone-200 rounded-3xl shadow-sm">
-            <p className="text-xl text-stone-500 mb-4">No blog posts found.</p>
+            <p className="text-xl text-stone-500 mb-4 font-heading italic">No blog posts found.</p>
             <Link to="/admin/new" className="text-[#59425A] font-bold hover:underline">
               Create your first post
             </Link>
