@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import VariableProximity from './VariableProximity.jsx';
 import TiltedCard from './TiltedCard.jsx';
 import Noise from './Noise.jsx';
+import work1 from '../assets/images/work1.jpeg';
+
 
 export default function WhoWeAre() {
   const containerRef = useRef(null);
@@ -70,7 +72,7 @@ export default function WhoWeAre() {
           <div className="bg-white border border-stone-200 shadow-xl shadow-stone-200/50 rounded-[2rem] p-2 aspect-[4/3] w-full">
             <div className="w-full h-full rounded-[1.8rem] bg-transparent overflow-hidden relative">
               <TiltedCard
-                imageSrc="./src/assets/images/work1.jpeg"
+                imageSrc={work1}
                 altText="Balaji Creatives Team"
                 captionText="Balaji Creatives"
                 containerHeight="100%"
