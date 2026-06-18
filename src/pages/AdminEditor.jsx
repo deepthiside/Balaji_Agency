@@ -11,6 +11,8 @@ export default function AdminEditor() {
   const navigate = useNavigate();
   const isNew = !id;
 
+  const [isAuth, setIsAuth] = useState(() => sessionStorage.getItem('isAdminLoggedIn') === 'true');
+
   const [formData, setFormData] = useState({
     title: '',
     excerpt: '',
@@ -21,8 +23,7 @@ export default function AdminEditor() {
   });
 
   useEffect(() => {
-    const isLoggedIn = sessionStorage.getItem('isAdminLoggedIn');
-    if (!isLoggedIn) {
+    if (!isAuth) {
       navigate('/admin');
       return;
     }
@@ -35,7 +36,9 @@ export default function AdminEditor() {
         navigate('/admin/dashboard');
       }
     }
-  }, [id, isNew, navigate]);
+  }, [id, isNew, isAuth, navigate]);
+
+  if (!isAuth) return null;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -93,7 +96,8 @@ export default function AdminEditor() {
             </h1>
           </div>
           <button 
-            onClick={handleSubmit}
+            type="submit"
+            form="blog-form"
             className="flex items-center gap-2 bg-[#59425A] hover:bg-[#400B11] text-white px-6 py-2.5 rounded-lg font-bold transition-all shadow-md"
           >
             <Save className="w-4 h-4" />
@@ -103,7 +107,7 @@ export default function AdminEditor() {
       </header>
 
       <main className="max-w-4xl mx-auto px-6 py-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form id="blog-form" onSubmit={handleSubmit} className="space-y-6">
           <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6">
             <div>
               <label className="block text-sm font-semibold mb-2">Post Title</label>

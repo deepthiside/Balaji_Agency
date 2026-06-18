@@ -7,15 +7,17 @@ import { motion } from 'framer-motion';
 export default function AdminDashboard() {
   const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
+  const [isAuth, setIsAuth] = useState(() => sessionStorage.getItem('isAdminLoggedIn') === 'true');
 
   useEffect(() => {
-    const isLoggedIn = sessionStorage.getItem('isAdminLoggedIn');
-    if (!isLoggedIn) {
+    if (!isAuth) {
       navigate('/admin');
     } else {
       setBlogs(getBlogs());
     }
-  }, [navigate]);
+  }, [isAuth, navigate]);
+
+  if (!isAuth) return null;
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this blog post?')) {

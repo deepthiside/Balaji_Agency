@@ -100,18 +100,7 @@ export default function BlogPage() {
           ))}
         </div>
         
-        {/* Pagination / Load More (Placeholder) */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20 text-center"
-        >
-          <button className="bg-white px-8 py-3 rounded-full text-[#1C1917] hover:bg-[#59425A] hover:text-white hover:border-[#59425A] border border-stone-200 shadow-md font-bold transition-all">
-            Load More Articles
-          </button>
-        </motion.div>
+
       </main>
     </div>
   );

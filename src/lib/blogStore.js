@@ -96,7 +96,16 @@ export const saveBlog = (blogData) => {
     });
   }
   
-  localStorage.setItem('balaji_blogs', JSON.stringify(blogs));
+  try {
+    localStorage.setItem('balaji_blogs', JSON.stringify(blogs));
+  } catch (e) {
+    if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+      alert("Error: Storage limit exceeded! The image file you uploaded is too large. Please use a smaller image file or copy-paste an image web URL instead.");
+    } else {
+      alert("Error saving blog post: " + e.message);
+    }
+    throw e;
+  }
   return blogs;
 };
 
