@@ -165,6 +165,7 @@ const CardNav = ({
             >
               <div className="hamburger-line" />
               <div className="hamburger-line" />
+              <div className="hamburger-line" />
             </div>
 
             <div className="logo-container">

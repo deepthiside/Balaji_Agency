@@ -71,12 +71,17 @@
   transform-origin: 50% 50%;
 }
 
-.hamburger-menu.open .hamburger-line:first-child {
-  transform: translateY(4px) rotate(45deg);
+.hamburger-menu.open .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
 }
 
-.hamburger-menu.open .hamburger-line:last-child {
-  transform: translateY(-4px) rotate(-45deg);
+.hamburger-menu.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .logo-container {
