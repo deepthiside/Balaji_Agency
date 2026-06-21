@@ -13,7 +13,15 @@ export default function BlogPost() {
     const fetchedPost = getBlogById(id);
     if (fetchedPost) {
       setPost(fetchedPost);
-      document.title = `${fetchedPost.title} | Balaji Creatives`;
+      document.title = fetchedPost.metaTitle || `${fetchedPost.title} | Balaji Creatives`;
+      
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute(
+          'content', 
+          fetchedPost.metaDescription || `Read ${fetchedPost.title} on Balaji Creatives.`
+        );
+      }
     } else {
       navigate('/blog');
     }
