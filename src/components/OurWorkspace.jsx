@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import FlyingPosters from './FlyingPosters';
+import Carousel from './Carousel';
 import Office1 from '../assets/images/Office1.jpeg';
 import Office2 from '../assets/images/Office2.jpeg';
 import Office3 from '../assets/images/Office3.jpeg';
@@ -8,35 +8,47 @@ import Office4 from '../assets/images/Office4.jpeg';
 import Office5 from '../assets/images/Office5.jpeg';
 import Office6 from '../assets/images/Office6.jpeg';
 
-
-const workspaceImages = [
-  Office1,
-  Office2,
-  Office3,
-  Office4,
-  Office5,
-  Office6
+const carouselItems = [
+  {
+    id: 1,
+    title: 'Command Center',
+    description: 'Where our team collaborates and crafts strategies.',
+    image: Office1
+  },
+  {
+    id: 2,
+    title: 'Ideation Hub',
+    description: 'Fostering creativity and developing next-gen campaigns.',
+    image: Office2
+  },
+  {
+    id: 3,
+    title: 'Execution Lounge',
+    description: 'Where ideas transform into premium digital assets.',
+    image: Office3
+  },
+  {
+    id: 4,
+    title: 'Focus Deck',
+    description: 'Designing experiences with precision and coding solutions.',
+    image: Office4
+  },
+  {
+    id: 5,
+    title: 'Sync Space',
+    description: 'Aligning with clients and teams to perfect every project.',
+    image: Office5
+  },
+  {
+    id: 6,
+    title: 'Creative Corner',
+    description: 'Inspiration, storytelling, and premium production.',
+    image: Office6
+  }
 ];
 
 export default function OurWorkspace() {
   const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.883907038933!2d75.807865!3d26.844371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db60e34c9c10f%3A0x63351654c6061730!2sUDB%20Corporate%20Towers!5e0!3m2!1sen!2sin!4v1715535000000!5m2!1sen!2sin`;
-
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const planeWidth = isMobile ? 220 : 380;
-  const planeHeight = isMobile ? 280 : 480;
-  const cameraFov = isMobile ? 45 : 35;
-  const cameraZ = isMobile ? 20 : 25;
-  const distortion = isMobile ? 0.3 : 3.0; // Reduce distortion on mobile to keep planes perfectly flat/stable!
 
   return (
     <section id="workspace" className="relative min-h-screen bg-[#E3DAC9] py-24 px-6 md:px-16 lg:px-20 border-t border-[#1C1917]/10 overflow-hidden">
@@ -75,25 +87,24 @@ export default function OurWorkspace() {
             </div>
           </motion.div>
 
-          {/* Flying Posters Side */}
+          {/* Carousel Workspace Images Side */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="relative rounded-[2rem] overflow-hidden bg-[#FAFAF9] border border-stone-200 shadow-xl shadow-black/25"
           >
-            <FlyingPosters
-              items={workspaceImages}
-              planeWidth={planeWidth}
-              planeHeight={planeHeight}
-              distortion={distortion}
-              scrollEase={0.015}
-              cameraFov={cameraFov}
-              cameraZ={cameraZ}
+            <Carousel
+              items={carouselItems}
+              autoplay={true}
+              autoplayDelay={3000}
+              pauseOnHover={true}
+              loop={true}
+              round={false}
             />
             <div className="absolute top-6 right-6 z-20">
               <div className="bg-white border border-stone-200 px-4 py-2 rounded-full text-[10px] text-[#1C1917]/70 uppercase tracking-widest font-semibold backdrop-blur-md">
-                Scroll to explore
+                Swipe to explore
               </div>
             </div>
           </motion.div>
@@ -105,3 +116,4 @@ export default function OurWorkspace() {
     </section>
   );
 }
+
